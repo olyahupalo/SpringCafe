@@ -90,8 +90,8 @@
 								</c:forEach>
 							</td>
 							<td class="text-center">
-								<a href="/admin/cuisine/update/${cuisine.id}" class="btn btn-outline-warning btn-sm">Update</a>
-								<a href="/admin/cuisine/delete/${cuisine.id}" class="btn btn-outline-danger btn-sm">Delete</a>
+								<a href="/admin/meal/update/${meal.id}" class="btn btn-outline-warning btn-sm">Update</a>
+								<a href="/admin/meal/delete/${meal.id}" class="btn btn-outline-danger btn-sm">Delete</a>
 							</td>
 						</tr>
 					</c:forEach>

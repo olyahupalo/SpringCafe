@@ -23,7 +23,6 @@ public class AdminCuisineController {
 	
 	@Autowired
 	public AdminCuisineController(CuisineService service) {
-		super();
 		this.service = service;
 	}
 	
@@ -33,13 +32,13 @@ public class AdminCuisineController {
 	}
 	
 	@GetMapping
-	public String show(Model model){
+	public String show(Model model) {
 		model.addAttribute("cuisines", service.findAll());
 		return "cuisine";
 	}
-
+	
 	@GetMapping("/delete/{id}")
-	public String delete(@PathVariable Integer id){
+	public String delete(@PathVariable Integer id) {
 		service.delete(id);
 		return "redirect:/admin/cuisine";
 	}
@@ -61,5 +60,4 @@ public class AdminCuisineController {
 		status.setComplete();
 		return "redirect:/admin/cuisine";
 	}
-	 
 }
