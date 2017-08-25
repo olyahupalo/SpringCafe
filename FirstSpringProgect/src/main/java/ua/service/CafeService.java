@@ -6,6 +6,8 @@ import ua.model.view.CafeView;
 import ua.model.request.CafeRequest;
 
 public interface CafeService{
+	
+	List<String> findAllTimes();
 
 	List<CafeView> findAllViews();
 

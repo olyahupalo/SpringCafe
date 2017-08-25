@@ -10,6 +10,9 @@ import ua.model.view.CafeView;
 
 public interface CafeRepository extends JpaRepository<Cafe, Integer>{
 
+	@Query("SELECT o.time FROM OpenClose o")
+	List<String> findAllTimes();
+	
 	@Query("SELECT new ua.model.view.CafeView(c.id, c.rate, c.name, c.photoUrl, c.version, c.address, c.fullDescription, c.type, c.phone, c.email, open.time, close.time) FROM Cafe c JOIN c.open open JOIN c.close close") 
 	List<CafeView> findAllViews();
 	

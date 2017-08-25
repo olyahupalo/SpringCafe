@@ -11,7 +11,6 @@ public class OpenCloseServiceImpl extends CrudServiceImpl<OpenClose, Integer> im
 	@Autowired
 	public OpenCloseServiceImpl(OpenCloseRepository repository) {
 		super(repository);
-		// TODO Auto-generated constructor stub
 	}
 
 }

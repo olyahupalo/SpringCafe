@@ -72,6 +72,11 @@ public class CafeServiceImpl implements CafeService {
 		request.setType(cafe.getType().toString());
 		return request;
 	}
+
+	@Override
+	public List<String> findAllTimes() {
+		return repository.findAllTimes();
+	}
 	
 
 

@@ -35,6 +35,7 @@ public class AdminCafeController {
 	
 	@GetMapping
 	public String show(Model model) {
+		model.addAttribute("times", service.findAllTimes());
 		model.addAttribute("cafes", service.findAllViews());
 		return "cafe";
 	}

@@ -65,14 +65,21 @@
 					<div class="form-group row">
 						<label class="col-2 col-form-label" for="open">Open:</label>
 						<div class="col-10">
-							<form:input class="form-control" id="open" path="open"/>
+							<select class="form-control" id="open" name="open">
+								<c:forEach var="time" items="${times}">
+									<option value="${time}">${time}</option>
+								</c:forEach>
+							</select>
 						</div>
 					</div>
 					<div class="form-group row">
 						<label class="col-2 col-form-label" for="close">Close:</label>
 						<div class="col-10">
-							<form:input class="form-control" id="close" path="close"/>
-						</div>
+							<select class="form-control" id="close" name="close">
+								<c:forEach var="time" items="${times}">
+									<option value="${time}">${time}</option>
+								</c:forEach>
+							</select>
 					</div>
 					<div class="form-group row">
 						<div class="col-10 mr-left">
