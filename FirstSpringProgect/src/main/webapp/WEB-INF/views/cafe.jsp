@@ -84,6 +84,7 @@
 					<div class="form-group row">
 						<div class="col-10 mr-left">
 							<button class="btn btn-sm btn-outline-success">Save</button>
+							<a href="/admin/cafe/cancel" class="btn btn-sm btn-outline-warning">Cancel</a>
 						</div>
 					</div>
 				</form:form>
