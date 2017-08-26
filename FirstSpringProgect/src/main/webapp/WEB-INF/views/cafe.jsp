@@ -65,6 +65,7 @@
 					<div class="form-group row">
 						<label class="col-2 col-form-label" for="open">Open:</label>
 						<div class="col-10">
+<%-- 							<form:select path="open" items="${times}" class="form-control"/> --%>
 							<select class="form-control" id="open" name="open">
 								<c:forEach var="time" items="${times}">
 									<option value="${time}">${time}</option>
@@ -75,11 +76,13 @@
 					<div class="form-group row">
 						<label class="col-2 col-form-label" for="close">Close:</label>
 						<div class="col-10">
+<%-- 						<form:select path="close" items="${times}" class="form-control"/> --%>
 							<select class="form-control" id="close" name="close">
 								<c:forEach var="time" items="${times}">
 									<option value="${time}">${time}</option>
 								</c:forEach>
 							</select>
+						</div>
 					</div>
 					<div class="form-group row">
 						<div class="col-10 mr-left">
