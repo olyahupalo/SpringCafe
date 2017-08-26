@@ -45,6 +45,12 @@
 						</div>
 					</div>
 					<div class="form-group row">
+						<label class="col-2 col-form-label" for="cafe">Cafe:</label>
+						<div class="col-10">
+							<form:select path="cafe" items="${cafes}" class="form-control"/>
+						</div>
+					</div>
+					<div class="form-group row">
 						<label class="col-2 col-form-label" for="ingredients">Ingredients:</label>
 						<div class="col-10">
 							<form:select path="ingredients" items="${ingredients}" class="form-control" multiple="multiple"/>
@@ -67,6 +73,7 @@
 						<th class="text-center">Description</th>
 						<th class="text-center">Price</th>
 						<th class="text-center">Cuisine</th>
+						<th class="text-center">Cafe</th>
 						<th class="text-center">Weight</th>
 						<th class="text-center">Ingredients</th>
 						<th class="text-center">Options</th>
@@ -77,6 +84,7 @@
 							<td>${meal.description}</td>
 							<td>${meal.price}</td>
 							<td>${meal.cuisine}</td>
+							<td>${meal.cafe}</td>
 							<td>${meal.weight}</td>
 							<td>
 								<c:forEach var="ingredient" items="${meal.ingredients}">

@@ -15,11 +15,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="cafe")
-public class Cafe extends AbstractEntity{
+public class Cafe extends AbstractEntityName{
 	
 	private BigDecimal rate;
-	
-	private String name;
 	
 	private String photoUrl;
 	
@@ -52,6 +50,14 @@ public class Cafe extends AbstractEntity{
 	@OneToMany(mappedBy="cafe")
 	private List<Meal> meals = new ArrayList<>();
 	
+	public Cafe() {
+		super();
+	}
+	
+	public Cafe(String name) {
+		super(name);
+	}
+
 	public List<Meal> getMeals() {
 		return meals;
 	}
@@ -63,12 +69,6 @@ public class Cafe extends AbstractEntity{
 	}
 	public void setRate(BigDecimal rate) {
 		this.rate = rate;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
 	}
 	public String getPhotoUrl() {
 		return photoUrl;

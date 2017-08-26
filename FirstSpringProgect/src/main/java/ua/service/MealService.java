@@ -9,6 +9,8 @@ public interface MealService {
 
 	List<String> findAllCuisines();
 	
+	List<String> findAllCafes();
+	
 	List<String> findAllIngredients();
 	
 	List<MealView> findAllViews();

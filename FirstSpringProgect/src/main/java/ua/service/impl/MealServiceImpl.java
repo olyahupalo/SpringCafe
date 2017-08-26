@@ -25,6 +25,11 @@ public class MealServiceImpl implements MealService{
 	public List<String> findAllCuisines() {
 		return repository.findAllCuisines();
 	}
+	
+	@Override
+	public List<String> findAllCafes() {
+		return repository.findAllCafes();
+	}
 
 	@Override
 	public List<String> findAllIngredients() {
@@ -52,6 +57,7 @@ public class MealServiceImpl implements MealService{
 	public void save(MealRequest request) {
 		Meal meal = new Meal();
 		meal.setCuisine(request.getCuisine());
+		meal.setCafe(request.getCafe());
 		meal.setDescription(request.getDescription());
 		meal.setId(request.getId());
 		meal.setIngredients(request.getIngredients());
@@ -68,6 +74,7 @@ public class MealServiceImpl implements MealService{
 		Meal meal = repository.findOneRequest(id);
 		MealRequest request = new MealRequest();
 		request.setCuisine(meal.getCuisine());
+		request.setCafe(meal.getCafe());
 		request.setDescription(meal.getDescription());
 		request.setId(meal.getId());
 		request.setIngredients(meal.getIngredients());
@@ -78,4 +85,5 @@ public class MealServiceImpl implements MealService{
 		request.setWeight(String.valueOf(meal.getWeight()));
 		return request;
 	}
+
 }

@@ -13,10 +13,13 @@ public interface MealRepository extends JpaRepository<Meal, Integer>{
 	@Query("SELECT c.name FROM Cuisine c")
 	List<String> findAllCuisines();
 	
+	@Query("SELECT c.name FROM Cafe c")
+	List<String> findAllCafes();
+	
 	@Query("SELECT i.name FROM Ingredient i")
 	List<String> findAllIngredients();
 	
-	@Query("SELECT new ua.model.view.MealView(m.id, m.title, m.description, m.price, m.photoUrl, m.version, c.name, m.weight) FROM Meal m JOIN m.cuisine c")
+	@Query("SELECT new ua.model.view.MealView(m.id, m.title, m.description, m.price, m.photoUrl, m.version, c.name, m.weight, cafe.name) FROM Meal m JOIN m.cuisine c JOIN m.cafe cafe")
 	List<MealView> findAllViews();
 	
 	@Query("SELECT i.name FROM Ingredient i JOIN i.meals m WHERE m.id=?1")

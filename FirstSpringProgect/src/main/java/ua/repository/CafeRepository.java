@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import ua.entity.Cafe;
 import ua.model.view.CafeView;
 
-public interface CafeRepository extends JpaRepository<Cafe, Integer>{
+public interface CafeRepository extends JpaNameRepository<Cafe>{
 
 	@Query("SELECT o.time FROM OpenClose o")
 	List<String> findAllTimes();

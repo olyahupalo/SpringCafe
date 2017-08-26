@@ -36,6 +36,7 @@ public class AdminMealController {
 	public String show(Model model) {
 		model.addAttribute("ingredients", service.findAllIngredients());
 		model.addAttribute("cuisines", service.findAllCuisines());
+		model.addAttribute("cafes", service.findAllCafes());
 		model.addAttribute("meals", service.findAllViews());
 		return "meal";
 	}
