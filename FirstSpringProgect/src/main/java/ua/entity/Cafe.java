@@ -44,6 +44,9 @@ public class Cafe extends AbstractEntityName{
 	@ManyToOne(fetch=FetchType.LAZY)
 	private OpenClose close;
 	
+	@ManyToOne(fetch=FetchType.LAZY)
+	private User user;
+	
 	@OneToMany(mappedBy="cafe")
 	private List<ua.entity.Table> tables = new ArrayList<>();
 	
@@ -136,4 +139,14 @@ public class Cafe extends AbstractEntityName{
 	public void setTables(List<ua.entity.Table> tables) {
 		this.tables = tables;
 	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
+	
 }

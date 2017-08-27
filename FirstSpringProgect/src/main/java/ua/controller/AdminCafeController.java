@@ -13,7 +13,6 @@ import org.springframework.web.bind.support.SessionStatus;
 
 import ua.service.CafeService;
 import ua.model.request.*;
-import ua.repository.CafeRepository;
 
 @Controller
 @RequestMapping("/admin/cafe")
