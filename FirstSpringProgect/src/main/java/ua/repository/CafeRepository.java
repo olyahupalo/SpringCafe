@@ -2,7 +2,6 @@ package ua.repository;
 
 import java.util.List;
 
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import ua.entity.Cafe;
@@ -12,6 +11,9 @@ public interface CafeRepository extends JpaNameRepository<Cafe>{
 
 	@Query("SELECT o.time FROM OpenClose o")
 	List<String> findAllTimes();
+	
+//	@Query("SELECT m.title FROM Meal m")
+//	List<String> findAllMeals();
 	
 	@Query("SELECT new ua.model.view.CafeView(c.id, c.rate, c.name, c.photoUrl, c.version, c.address, c.fullDescription, c.type, c.phone, c.email, open.time, close.time) FROM Cafe c JOIN c.open open JOIN c.close close JOIN c.user user WHERE user.email=?1") 
 	List<CafeView> findAllViews(String email);
