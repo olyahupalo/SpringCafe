@@ -1,5 +1,7 @@
 package ua.controller;
 
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,9 +35,10 @@ public class AdminCafeController {
 	}
 	
 	@GetMapping
-	public String show(Model model) {
+	public String show(Model model, Principal principal) {
 		model.addAttribute("times", service.findAllTimes());
-		model.addAttribute("cafes", service.findAllViews());
+		//model.addAttribute("cafes", service.findAllViews());
+		model.addAttribute("cafes", service.findAllViews(principal.getName()));
 		return "cafe";
 	}
 	
@@ -52,9 +55,9 @@ public class AdminCafeController {
 	}
 
 	@GetMapping("/update/{id}")
-	public String update(@PathVariable Integer id, Model model) {
+	public String update(@PathVariable Integer id, Model model, Principal principal) {
 		model.addAttribute("cafe", service.findOne(id));
-		return show(model);
+		return show(model, principal);
 }
 	
 	@GetMapping("/cancel")

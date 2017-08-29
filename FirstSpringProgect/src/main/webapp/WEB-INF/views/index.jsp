@@ -13,6 +13,9 @@
 	<sec:authorize access="hasRole('ROLE_ADMIN')">
 		<a href="/admin">Admin</a>
 	</sec:authorize>
+	<sec:authorize access="hasRole('ROLE_CAFE')">
+		<a href="/profile">My Profile</a>
+	</sec:authorize>
 	<sec:authorize access="isAnonymous()">
 		<a href="/registration">Registration</a>
 		<a href="/login">Login</a>

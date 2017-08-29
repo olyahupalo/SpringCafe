@@ -1,6 +1,7 @@
 package ua.model.request;
 
 import ua.entity.OpenClose;
+import ua.entity.User;
 
 public class CafeRequest {
 
@@ -27,6 +28,8 @@ public class CafeRequest {
 	private OpenClose open;
 	
 	private OpenClose close;
+	
+	private User user;
 
 	public Integer getId() {
 		return id;
@@ -123,6 +126,15 @@ public class CafeRequest {
 	public void setClose(OpenClose close) {
 		this.close = close;
 	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
 	
 	
 	

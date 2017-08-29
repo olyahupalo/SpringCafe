@@ -9,7 +9,8 @@ public interface CafeService{
 	
 	List<String> findAllTimes();
 
-	List<CafeView> findAllViews();
+//	List<CafeView> findAllViews();
+	List<CafeView> findAllViews(String email);
 
 	void save(CafeRequest request);
 	

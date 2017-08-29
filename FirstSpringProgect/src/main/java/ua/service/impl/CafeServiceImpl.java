@@ -23,12 +23,18 @@ public class CafeServiceImpl implements CafeService {
 		this.repository = repository;
 	}
 
+//	@Override
+//	@Transactional(readOnly=true)
+//	public List<CafeView> findAllViews() {
+//		return repository.findAllViews();
+//	}
+
 	@Override
 	@Transactional(readOnly=true)
-	public List<CafeView> findAllViews() {
-		return repository.findAllViews();
+	public List<CafeView> findAllViews(String email) {
+		return repository.findAllViews(email);
 	}
-
+	
 	@Override
 	public void save(CafeRequest request) {
 		Cafe cafe = new Cafe();
@@ -44,6 +50,7 @@ public class CafeServiceImpl implements CafeService {
 		cafe.setRate(new BigDecimal(request.getRate()));
 		cafe.setVersion(request.getVersion());
 		cafe.setType(Type.valueOf(request.getType().toUpperCase()));
+		cafe.setUser(request.getUser());
 		repository.save(cafe);
 	}
 
@@ -68,6 +75,7 @@ public class CafeServiceImpl implements CafeService {
 		request.setRate(String.valueOf(cafe.getRate()));
 		request.setVersion(request.getVersion());
 		request.setType(cafe.getType().toString());
+		request.setUser(cafe.getUser());
 		return request;
 	}
 

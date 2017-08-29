@@ -90,7 +90,9 @@
 							<a href="/admin/cafe/cancel" class="btn btn-sm btn-outline-warning">Cancel</a>
 						</div>
 					</div>
+					<form:hidden path="user" value=""/>
 				</form:form>
+				
 			</div>
 		</div>
 		<div class="row">
