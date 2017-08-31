@@ -17,11 +17,11 @@ import ua.service.CafeIndexService;
 @Controller
 @RequestMapping("/profile")
 @SessionAttributes("profile")
-public class CafeCafeIndexController {
+public class CafeProfileController {
 
 	private final CafeIndexService service;
 
-	public CafeCafeIndexController(CafeIndexService service) {
+	public CafeProfileController(CafeIndexService service) {
 		super();
 		this.service = service;
 	}
@@ -33,7 +33,7 @@ public class CafeCafeIndexController {
 	
 	@GetMapping
 	public String show(Model model, Principal principal) {
-		model.addAttribute("cafes", service.findAllViews());
+		model.addAttribute("cafes", service.findAllViewsbyLogin(principal.getName()));
 		return "profile";
 	}
 	

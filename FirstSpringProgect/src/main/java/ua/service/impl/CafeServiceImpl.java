@@ -42,6 +42,7 @@ public class CafeServiceImpl implements CafeService {
 		cafe.setClose(request.getClose());
 		cafe.setEmail(request.getEmail());
 		cafe.setFullDescription(request.getFullDescription());
+		cafe.setShortDescription(request.getShortDescription());
 		cafe.setId(request.getId());
 		cafe.setName(request.getName());
 		cafe.setOpen(request.getOpen());
@@ -67,6 +68,7 @@ public class CafeServiceImpl implements CafeService {
 		request.setClose(cafe.getClose());
 		request.setEmail(cafe.getEmail());
 		request.setFullDescription(cafe.getFullDescription());
+		request.setShortDescription(cafe.getShortDescription());
 		request.setId(cafe.getId());
 		request.setName(cafe.getName());
 		request.setOpen(cafe.getOpen());

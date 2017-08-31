@@ -8,4 +8,7 @@ public interface CafeIndexService {
 
 	List<CafeIndexView> findAllViews();
 	
+	List<CafeIndexView> findAllViewsbyLogin(String login);
+	
 }
+

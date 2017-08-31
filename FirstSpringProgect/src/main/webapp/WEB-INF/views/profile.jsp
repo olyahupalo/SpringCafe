@@ -35,6 +35,7 @@
 				</table>
 			</div>
 		</div>
+		<a href="/profile/createcafe">Create new cafe</a>
 	</div>
 </body>
 </html>

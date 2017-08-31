@@ -19,6 +19,8 @@ public class CafeRequest {
 	
 	private String fullDescription;
 	
+	private String shortDescription;
+	
 	private String type;
 	
 	private String phone;
@@ -85,6 +87,14 @@ public class CafeRequest {
 
 	public void setFullDescription(String fullDescription) {
 		this.fullDescription = fullDescription;
+	}
+
+	public String getShortDescription() {
+		return shortDescription;
+	}
+
+	public void setShortDescription(String shortDescription) {
+		this.shortDescription = shortDescription;
 	}
 
 	public String getType() {

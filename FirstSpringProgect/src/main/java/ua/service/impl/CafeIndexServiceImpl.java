@@ -23,4 +23,9 @@ public class CafeIndexServiceImpl implements CafeIndexService{
 		return repository.findAllViews();
 	}
 
+	@Override
+	public List<CafeIndexView> findAllViewsbyLogin(String login) {
+		return repository.findAllViewsbyLogin(login);
+	}
+
 }
