@@ -1,5 +1,7 @@
 package ua.controller;
 
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import ua.entity.Table;
+import ua.service.CafeService;
 import ua.service.TableService;
 
 @Controller
@@ -20,20 +23,30 @@ import ua.service.TableService;
 public class AdminTableController {
 	
 	private final TableService service;
+	
+	private final CafeService service2;
 
 	@Autowired
-	public AdminTableController(TableService service) {
+	public AdminTableController(TableService service, CafeService service2) {
+		super();
 		this.service = service;
+		this.service2 = service2;
 	}
+//	public AdminTableController(TableService service) {
+//		this.service = service;
+//	}
+	
 	
 	@ModelAttribute("table")
 	public Table getForm() {
 		return new Table();
 	}
 	
+
 	@GetMapping
-	public String show(Model model){
+	public String show(Model model, Principal principal){
 		model.addAttribute("tables", service.findAll());
+		model.addAttribute("cafes", service2.findAllViews(principal.getName()));
 		return "table";
 	}
 
@@ -50,9 +63,9 @@ public class AdminTableController {
 	}
 	
 	@GetMapping("/update/{id}")
-	public String update(@PathVariable Integer id, Model model) {
+	public String update(@PathVariable Integer id, Model model, Principal principal) {
 		model.addAttribute("table", service.findOne(id));
-		return show(model);
+		return show(model, principal);
 	}
 	
 	@GetMapping("/cancel")

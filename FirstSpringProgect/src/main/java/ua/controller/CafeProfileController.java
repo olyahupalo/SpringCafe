@@ -6,11 +6,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import ua.model.request.CafeRequest;
 import ua.service.CafeIndexService;
+import ua.service.CafeService;
 
 
 
@@ -20,12 +22,16 @@ import ua.service.CafeIndexService;
 public class CafeProfileController {
 
 	private final CafeIndexService service;
+	
+	private final CafeService service2;
 
-	public CafeProfileController(CafeIndexService service) {
+	
+	public CafeProfileController(CafeIndexService service, CafeService service2) {
 		super();
 		this.service = service;
+		this.service2 = service2;
 	}
-	
+
 	@ModelAttribute("profile")
 	public CafeRequest getForm() {
 		return new CafeRequest();
@@ -37,6 +43,10 @@ public class CafeProfileController {
 		return "profile";
 	}
 	
-	
+//	@GetMapping("/cafe/{id}")
+//	public String showOne(@PathVariable Integer id, Model model, Principal principal) {
+//		model.addAttribute("cafe", service2.findOne(id));
+//		return show(model, principal);
+//	}
 	
 }

@@ -23,14 +23,15 @@
 						<th class="text-center">Type</th>
 					</tr>
 					<c:forEach var="cafe" items="${cafes}">
-						<tr>
-							<td>${cafe.rate}</td>
-							<td>${cafe.name}</td>
-							<td>${cafe.photoUrl}</td>
-							<td>${cafe.address}</td>
-							<td>${cafe.shortDescription}</td>
-							<td>${cafe.type}</td>
-						</tr>
+							<tr>
+								<td>${cafe.rate}</td>
+								<td>${cafe.name}</td>
+								<td> <a href="/profile/cafe/${cafe.id}">${cafe.photoUrl}</a></td>
+								<td>${cafe.address}</td>
+								<td>${cafe.shortDescription}</td>
+								<td>${cafe.type}</td>
+							
+							</tr>
 					</c:forEach>
 				</table>
 			</div>

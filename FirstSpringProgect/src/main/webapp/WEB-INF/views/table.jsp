@@ -31,6 +31,12 @@
 							<button class="btn btn-sm btn-outline-success">Save</button>
 						</div>
 					</div>
+					<div class="form-group row">
+						<label class="col-2 col-form-label" for="cafe">Cafe:</label>
+						<div class="col-10">
+							<form:select path="cafe" items="${cafes}" class="form-control"/>
+						</div>
+					</div>
 				</form:form>
 			</div>
 			<div class="col-12">
