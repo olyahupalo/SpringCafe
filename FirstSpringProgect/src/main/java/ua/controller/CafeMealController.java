@@ -16,14 +16,14 @@ import ua.model.request.MealRequest;
 import ua.service.MealService;
 
 @Controller
-@RequestMapping("/admin/meal")
+@RequestMapping("/profile/meal")
 @SessionAttributes("meal")
-public class AdminMealController {
+public class CafeMealController {
 
 	private final MealService service;
 	
 	@Autowired
-	public AdminMealController(MealService service) {
+	public CafeMealController(MealService service) {
 		this.service = service;
 	}
 	
@@ -44,7 +44,7 @@ public class AdminMealController {
 	@GetMapping("/delete/{id}")
 	public String delete(@PathVariable Integer id) {
 		service.delete(id);
-		return "redirect:/admin/meal";
+		return "redirect:/profile/meal";
 	}
 	
 	@PostMapping
@@ -62,6 +62,6 @@ public class AdminMealController {
 	@GetMapping("/cancel")
 	public String cancel(SessionStatus status) {
 		status.setComplete();
-		return "redirect:/admin/meal";
+		return "redirect:/profile/meal";
 	}
 }

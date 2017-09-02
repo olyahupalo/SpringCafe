@@ -13,7 +13,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-12">
-				<form:form action="/admin/meal" method="POST" modelAttribute="meal">
+				<form:form action="/profile/meal" method="POST" modelAttribute="meal">
 					<div class="form-group row">
 						<label class="col-2 col-form-label" for="title">Title:</label>
 						<div class="col-10">
@@ -59,7 +59,7 @@
 					<div class="form-group row">
 						<div class="col-10 mr-left">
 							<button class="btn btn-sm btn-outline-success">Save</button>
-							<a href="/admin/meal/cancel" class="btn btn-sm btn-outline-warning">Cancel</a>
+							<a href="/profile/meal/cancel" class="btn btn-sm btn-outline-warning">Cancel</a>
 						</div>
 					</div>
 				</form:form>
@@ -92,8 +92,8 @@
 								</c:forEach>
 							</td>
 							<td class="text-center">
-								<a href="/admin/meal/update/${meal.id}" class="btn btn-outline-warning btn-sm">Update</a>
-								<a href="/admin/meal/delete/${meal.id}" class="btn btn-outline-danger btn-sm">Delete</a>
+								<a href="/profile/meal/update/${meal.id}" class="btn btn-outline-warning btn-sm">Update</a>
+								<a href="/admin/profile/delete/${meal.id}" class="btn btn-outline-danger btn-sm">Delete</a>
 							</td>
 						</tr>
 					</c:forEach>

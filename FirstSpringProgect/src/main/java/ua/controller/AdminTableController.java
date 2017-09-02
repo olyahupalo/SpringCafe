@@ -18,7 +18,7 @@ import ua.service.CafeService;
 import ua.service.TableService;
 
 @Controller
-@RequestMapping("/admin/table")
+@RequestMapping("/profile/table")
 @SessionAttributes("table")
 public class AdminTableController {
 	
@@ -53,7 +53,7 @@ public class AdminTableController {
 	@GetMapping("/delete/{id}")
 	public String delete(@PathVariable Integer id){
 		service.delete(id);
-		return "redirect:/admin/table";
+		return "redirect:/profile/table";
 	}
 	
 	@PostMapping
@@ -71,7 +71,7 @@ public class AdminTableController {
 	@GetMapping("/cancel")
 	public String cancel(SessionStatus status) {
 		status.setComplete();
-		return "redirect:/admin/table";
+		return "redirect:/profile/table";
 	}
 
 }

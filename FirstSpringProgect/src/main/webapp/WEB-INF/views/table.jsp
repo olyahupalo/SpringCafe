@@ -13,7 +13,7 @@
 	<div class="container">
 		<div class="row">
 		<div class="col-12">
-				<form:form action="/admin/table" method="POST" modelAttribute="table">
+				<form:form action="/profile/table" method="POST" modelAttribute="table">
 					<div class="form-group row">
 						<label class="col-2 col-form-label" for="countOfPeople">Count Of People:</label>
 						<div class="col-10">
@@ -27,14 +27,15 @@
 						</div>
 					</div>
 					<div class="form-group row">
-						<div class="col-10 mr-left">
-							<button class="btn btn-sm btn-outline-success">Save</button>
+						<label class="col-2 col-form-label" for="cafe">Cafe:</label>
+						<div class="col-10">
+							<form:select path="cafe" items="${cafes}" class="form-control" itemLabel="name" itemValue="id"/>
 						</div>
 					</div>
 					<div class="form-group row">
-						<label class="col-2 col-form-label" for="cafe">Cafe:</label>
-						<div class="col-10">
-							<form:select path="cafe" items="${cafes}" class="form-control"/>
+						<div class="col-10 mr-left">
+							<button class="btn btn-sm btn-outline-success">Save</button>
+							<a href="/profile/table/cancel" class="btn btn-sm btn-outline-warning">Cancel</a>
 						</div>
 					</div>
 				</form:form>
@@ -44,14 +45,16 @@
 					<tr>
 						<th class="text-center">Count of people</th>
 						<th class="text-center">Options</th>
+						<th class="text-center">Cafe</th>
 					</tr>
 					<c:forEach var="table" items="${tables}">
 						<tr>
 							<td>${table.countOfPeople}</td>
 							<td>${table.isFree}</td>
+							<td>${table.cafe}</td>
 							<td class="text-center">
-								<a href="/admin/table/update/${table.id}" class="btn btn-outline-warning btn-sm">Update</a>
-								<a href="/admin/table/delete/${table.id}" class="btn btn-outline-danger btn-sm">Delete</a>
+								<a href="/profile/table/update/${table.id}" class="btn btn-outline-warning btn-sm">Update</a>
+								<a href="/profile/table/delete/${table.id}" class="btn btn-outline-danger btn-sm">Delete</a>
 							</td>
 						</tr>
 					</c:forEach>

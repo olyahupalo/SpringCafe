@@ -8,6 +8,7 @@ import ua.repository.TableRepository;
 import ua.service.TableService;
 @Service
 public class TableServiceImpl extends CrudServiceImpl<Table, Integer> implements TableService{
+	
 	@Autowired
 	public TableServiceImpl(TableRepository repository) {
 		super(repository);

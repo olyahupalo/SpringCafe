@@ -23,10 +23,10 @@
 						<th class="text-center">Type</th>
 					</tr>
 					<c:forEach var="cafe" items="${cafes}">
-							<tr>
+							<tr onMouseOver="this.style.backgroundColor='#ECECEE';" onMouseOut="this.style.backgroundColor='white'" onclick="location.href='profile/cafe/${cafe.id}'">
 								<td>${cafe.rate}</td>
 								<td>${cafe.name}</td>
-								<td> <a href="/profile/cafe/${cafe.id}">${cafe.photoUrl}</a></td>
+								<td>${cafe.photoUrl}</td>
 								<td>${cafe.address}</td>
 								<td>${cafe.shortDescription}</td>
 								<td>${cafe.type}</td>
@@ -37,6 +37,8 @@
 			</div>
 		</div>
 		<a href="/profile/createcafe">Create new cafe</a>
+		<a href="/profile/meal">Add Meal</a>
+		<a href="/profile/table">Add Table</a>
 	</div>
 </body>
 </html>
