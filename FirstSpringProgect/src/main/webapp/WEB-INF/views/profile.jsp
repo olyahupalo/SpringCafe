@@ -36,9 +36,11 @@
 				</table>
 			</div>
 		</div>
-		<a href="/profile/createcafe">Create new cafe</a>
-		<a href="/profile/meal">Add Meal</a>
-		<a href="/profile/table">Add Table</a>
+		<ul>
+			<li><a href="/profile/createcafe">Create new cafe</a></li>
+			<li><a href="/profile/meal">Add Meal</a></li>
+			<li><a href="/profile/table">Add Table</a></li>
+		</ul>
 	</div>
 </body>
 </html>

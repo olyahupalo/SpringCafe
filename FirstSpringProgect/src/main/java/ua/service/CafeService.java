@@ -8,6 +8,8 @@ import ua.model.request.CafeRequest;
 public interface CafeService{
 	
 	List<String> findAllTimes();
+	
+	List<String> findAllMeals();
 
 //	List<CafeView> findAllViews();
 	List<CafeView> findAllViews(String email);

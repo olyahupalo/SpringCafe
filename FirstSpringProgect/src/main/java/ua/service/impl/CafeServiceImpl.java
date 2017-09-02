@@ -32,7 +32,13 @@ public class CafeServiceImpl implements CafeService {
 	@Override
 	@Transactional(readOnly=true)
 	public List<CafeView> findAllViews(String email) {
-		return repository.findAllViews(email);
+		List<CafeView> views = repository.findAllViews(email);
+		views.forEach(this::loadMeals);
+		return views;
+	}
+	
+	private void loadMeals(CafeView view) {
+		view.setMeals(repository.findAllMealsByCafeId(view.getId()));
 	}
 	
 	@Override
@@ -78,12 +84,18 @@ public class CafeServiceImpl implements CafeService {
 		request.setVersion(request.getVersion());
 		request.setType(cafe.getType().toString());
 		request.setUser(cafe.getUser());
+		request.setMeals(cafe.getMeals());
 		return request;
 	}
 
 	@Override
 	public List<String> findAllTimes() {
 		return repository.findAllTimes();
+	}
+
+	@Override
+	public List<String> findAllMeals() {
+		return repository.findAllMeals();
 	}
 	
 

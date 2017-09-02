@@ -1,6 +1,10 @@
 package ua.controller;
 
 
+import java.security.Principal;
+
+import javax.sql.rowset.serial.SerialArray;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +17,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import ua.model.request.MealRequest;
+import ua.service.CafeService;
 import ua.service.MealService;
 
 @Controller
@@ -22,21 +27,25 @@ public class CafeMealController {
 
 	private final MealService service;
 	
+	private final CafeService service2;
+	
 	@Autowired
-	public CafeMealController(MealService service) {
+	public CafeMealController(MealService service, CafeService service2) {
+		super();
 		this.service = service;
+		this.service2 = service2;
 	}
 	
 	@ModelAttribute("meal")
 	public MealRequest getForm() {
 		return new MealRequest();
 	}
-	
+
 	@GetMapping
-	public String show(Model model) {
+	public String show(Model model, Principal principal) {
 		model.addAttribute("ingredients", service.findAllIngredients());
 		model.addAttribute("cuisines", service.findAllCuisines());
-		model.addAttribute("cafes", service.findAllCafes());
+		model.addAttribute("cafes", service2.findAllViews(principal.getName()));
 		model.addAttribute("meals", service.findAllViews());
 		return "meal";
 	}
@@ -54,9 +63,9 @@ public class CafeMealController {
 	}
 	
 	@GetMapping("/update/{id}")
-	public String update(@PathVariable Integer id, Model model) {
+	public String update(@PathVariable Integer id, Model model, Principal principal) {
 		model.addAttribute("meal", service.findOne(id));
-		return show(model);
+		return show(model, principal);
 	}
 	
 	@GetMapping("/cancel")

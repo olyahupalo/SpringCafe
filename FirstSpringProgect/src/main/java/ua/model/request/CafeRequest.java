@@ -1,5 +1,9 @@
 package ua.model.request;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import ua.entity.Meal;
 import ua.entity.OpenClose;
 import ua.entity.User;
 
@@ -32,6 +36,8 @@ public class CafeRequest {
 	private OpenClose close;
 	
 	private User user;
+	
+	private List<Meal> meals =  new ArrayList<>(); 
 
 	public Integer getId() {
 		return id;
@@ -143,6 +149,14 @@ public class CafeRequest {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public List<Meal> getMeals() {
+		return meals;
+	}
+
+	public void setMeals(List<Meal> meals) {
+		this.meals = meals;
 	}
 	
 	

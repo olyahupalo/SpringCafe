@@ -34,6 +34,7 @@ public class CafeProfileCafeController {
 	public String show(@PathVariable Integer id, Model model) {
 		model.addAttribute("cafe", service.findOne(id));
 		model.addAttribute("times", service.findAllTimes());
+		model.addAttribute("meals", service.findAllMeals());
 		return "cafe";
 	}
 	

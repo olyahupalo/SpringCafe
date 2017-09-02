@@ -18,7 +18,7 @@ public class Table extends AbstractEntity{
 	
 	private int countOfPeople;
 	
-	private boolean isFree;
+	private boolean isFree = true;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	private Cafe cafe;

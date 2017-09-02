@@ -20,12 +20,14 @@
 							<form:input class="form-control" id="countOfPeople" path="countOfPeople"/>
 						</div>
 					</div>
+<!--
 					<div class="form-group row">
 						<label class="col-2 col-form-label" for="isFree">isFree:</label>
 						<div class="col-10">
 							<form:input class="form-control" id="isFree" path="isFree"/>
 						</div>
 					</div>
+-->
 					<div class="form-group row">
 						<label class="col-2 col-form-label" for="cafe">Cafe:</label>
 						<div class="col-10">
@@ -51,7 +53,7 @@
 						<tr>
 							<td>${table.countOfPeople}</td>
 							<td>${table.isFree}</td>
-							<td>${table.cafe}</td>
+							<td>${table.cafe.name}</td>
 							<td class="text-center">
 								<a href="/profile/table/update/${table.id}" class="btn btn-outline-warning btn-sm">Update</a>
 								<a href="/profile/table/delete/${table.id}" class="btn btn-outline-danger btn-sm">Delete</a>

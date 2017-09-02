@@ -25,6 +25,7 @@
 						<th class="text-center">Email</th>
 						<th class="text-center">Open</th>
 						<th class="text-center">Close</th>
+						<th class="text-center">Meals</th>
 					</tr>
 						<tr >
 							<td>${cafe.rate}</td>
@@ -37,6 +38,11 @@
 							<td>${cafe.email}</td>
 							<td>${cafe.open.time}</td>
 							<td>${cafe.close.time}</td>
+							<td>
+								<c:forEach var="meal" items="${cafe.meals}">
+									${meal.title} 
+								</c:forEach>
+							</td>
 							<td class="text-center">
 								<a href="/profile/cafe/delete/${cafe.id}" class="btn btn-outline-danger btn-sm">Delete</a>
 							</td>
