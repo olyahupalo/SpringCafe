@@ -35,6 +35,7 @@ public class CafeProfileCafeController {
 		model.addAttribute("cafe", service.findOne(id));
 		model.addAttribute("times", service.findAllTimes());
 		model.addAttribute("meals", service.findAllMeals());
+		model.addAttribute("tables", service.findAllTables());
 		return "cafe";
 	}
 	

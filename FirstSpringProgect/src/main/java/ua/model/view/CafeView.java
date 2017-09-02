@@ -35,7 +35,7 @@ public class CafeView {
 	
 	private List<String> meals; 
 	
-	private List<String> tables;
+	private List<Integer> tables;
 	
 	public CafeView(Integer id, BigDecimal rate, String name, String photoUrl, int version, String address,String fullDescription, Type type, String phone, String email, LocalTime open, LocalTime close) {
 		this.id = id;
@@ -157,11 +157,11 @@ public class CafeView {
 		this.meals = meals;
 	}
 	
-	public List<String> getTables() {
+	public List<Integer> getTables() {
 		return tables;
 	}
 
-	public void setTables(List<String> tables) {
+	public void setTables(List<Integer> tables) {
 		this.tables = tables;
 	}
 

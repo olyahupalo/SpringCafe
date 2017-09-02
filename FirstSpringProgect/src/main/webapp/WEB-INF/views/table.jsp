@@ -46,8 +46,8 @@
 				<table class="table table-bordered">
 					<tr>
 						<th class="text-center">Count of people</th>
-						<th class="text-center">Options</th>
 						<th class="text-center">Cafe</th>
+						<th class="text-center">Options</th>
 					</tr>
 					<c:forEach var="table" items="${tables}">
 						<tr>

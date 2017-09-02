@@ -11,9 +11,7 @@
 	<ul>
 		<li><a href="/admin/cuisine">Cuisine</a></li>
 		<li><a href="/admin/ingredient">Ingredient</a></li>
-		<li><a href="/admin/table">Table</a></li>
-		<li><a href="/admin/meal">Meal</a></li>
-		<li><a href="/admin/cafe">Cafe</a></li>
+		<li><a href="/admin/openclose">OpenClose</a></li>
 	</ul>
 </body>
 </html>

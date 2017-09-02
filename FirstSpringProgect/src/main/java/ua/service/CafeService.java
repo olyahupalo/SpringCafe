@@ -10,6 +10,8 @@ public interface CafeService{
 	List<String> findAllTimes();
 	
 	List<String> findAllMeals();
+	
+	List<Integer> findAllTables();
 
 //	List<CafeView> findAllViews();
 	List<CafeView> findAllViews(String email);

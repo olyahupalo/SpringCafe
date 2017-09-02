@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,6 +27,8 @@
 						<th class="text-center">Open</th>
 						<th class="text-center">Close</th>
 						<th class="text-center">Meals</th>
+						<th class="text-center">Tables</th>
+						<th class="text-center">Options</th>
 					</tr>
 						<tr >
 							<td>${cafe.rate}</td>
@@ -43,6 +46,11 @@
 									${meal.title} 
 								</c:forEach>
 							</td>
+							<td>
+								<c:forEach var="table" items="${cafe.tables}">
+									${table.countOfPeople} 
+								</c:forEach>
+							</td>
 							<td class="text-center">
 								<a href="/profile/cafe/delete/${cafe.id}" class="btn btn-outline-danger btn-sm">Delete</a>
 							</td>
@@ -50,6 +58,7 @@
 				</table>
 			</div>
 		</div>
+		<sec:authorize access="hasRole('ROLE_CAFE')">
 		<div class="row">
 			<div class="col-12">
 				<form:form action="/profile/cafe" method="POST" modelAttribute="cafe">
@@ -81,6 +90,12 @@
 						<label class="col-2 col-form-label" for="fullDescription">Full Description:</label>
 						<div class="col-10">
 							<form:textarea class="form-control" id="fullDescription" path="fullDescription" rows="5"/>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-2 col-form-label" for="shortDescription">Short Description:</label>
+						<div class="col-10">
+							<form:textarea class="form-control" id="shortDescription" path="shortDescription" rows="5"/>
 						</div>
 					</div>
 					<div class="form-group row">
@@ -133,6 +148,7 @@
 				</form:form>
 			</div>
 		</div>
+	</sec:authorize>	
 	</div>
 </body>
 </html>

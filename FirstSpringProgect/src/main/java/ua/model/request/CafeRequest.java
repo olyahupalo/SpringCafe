@@ -5,6 +5,7 @@ import java.util.List;
 
 import ua.entity.Meal;
 import ua.entity.OpenClose;
+import ua.entity.Table;
 import ua.entity.User;
 
 public class CafeRequest {
@@ -38,6 +39,8 @@ public class CafeRequest {
 	private User user;
 	
 	private List<Meal> meals =  new ArrayList<>(); 
+	
+	private List<Table> tables =  new ArrayList<>(); 
 
 	public Integer getId() {
 		return id;
@@ -157,6 +160,14 @@ public class CafeRequest {
 
 	public void setMeals(List<Meal> meals) {
 		this.meals = meals;
+	}
+
+	public List<Table> getTables() {
+		return tables;
+	}
+
+	public void setTables(List<Table> tables) {
+		this.tables = tables;
 	}
 	
 	

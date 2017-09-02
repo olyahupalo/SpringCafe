@@ -34,11 +34,16 @@ public class CafeServiceImpl implements CafeService {
 	public List<CafeView> findAllViews(String email) {
 		List<CafeView> views = repository.findAllViews(email);
 		views.forEach(this::loadMeals);
+		views.forEach(this::loadTables);
 		return views;
 	}
 	
 	private void loadMeals(CafeView view) {
 		view.setMeals(repository.findAllMealsByCafeId(view.getId()));
+	}
+	
+	private void loadTables(CafeView view) {
+		view.setTables(repository.findAllTablesByCafeId(view.getId()));
 	}
 	
 	@Override
@@ -85,6 +90,7 @@ public class CafeServiceImpl implements CafeService {
 		request.setType(cafe.getType().toString());
 		request.setUser(cafe.getUser());
 		request.setMeals(cafe.getMeals());
+		request.setTables(cafe.getTables());
 		return request;
 	}
 
@@ -96,6 +102,11 @@ public class CafeServiceImpl implements CafeService {
 	@Override
 	public List<String> findAllMeals() {
 		return repository.findAllMeals();
+	}
+
+	@Override
+	public List<Integer> findAllTables() {
+		return repository.findAllTables();
 	}
 	
 
