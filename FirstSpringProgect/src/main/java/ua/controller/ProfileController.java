@@ -19,14 +19,14 @@ import ua.service.CafeService;
 @Controller
 @RequestMapping("/profile")
 @SessionAttributes("profile")
-public class CafeProfileController {
+public class ProfileController {
 
 	private final CafeIndexService service;
 	
 	private final CafeService service2;
 
 	
-	public CafeProfileController(CafeIndexService service, CafeService service2) {
+	public ProfileController(CafeIndexService service, CafeService service2) {
 		super();
 		this.service = service;
 		this.service2 = service2;

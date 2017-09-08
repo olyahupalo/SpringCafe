@@ -20,14 +20,14 @@ import ua.service.TableService;
 @Controller
 @RequestMapping("/profile/table")
 @SessionAttributes("table")
-public class AdminTableController {
+public class ProfileTableController {
 	
 	private final TableService service;
 	
 	private final CafeService service2;
 
 	@Autowired
-	public AdminTableController(TableService service, CafeService service2) {
+	public ProfileTableController(TableService service, CafeService service2) {
 		super();
 		this.service = service;
 		this.service2 = service2;

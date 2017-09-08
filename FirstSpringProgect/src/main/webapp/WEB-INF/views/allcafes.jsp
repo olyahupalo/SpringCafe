@@ -6,10 +6,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-<title>MyProfile</title>
+<title>All Cafes</title>
 </head>
 <body>
-	<h2>Cafes</h2>
+	<h2>All Cafes</h2>
 	<div class="container">
 		<div class="row">
 			<div class="col-12">
@@ -22,7 +22,7 @@
 						<th class="text-center">Short Description</th>
 						<th class="text-center">Type</th>
 					</tr>
-					<c:forEach var="cafe" items="${cafes}">
+					<c:forEach var="cafe" items="${allcafes}">
 							<tr onMouseOver="this.style.backgroundColor='#ECECEE';" onMouseOut="this.style.backgroundColor='white'" onclick="location.href='cafe/${cafe.id}'">
 								<td>${cafe.rate}</td>
 								<td>${cafe.name}</td>
@@ -30,17 +30,11 @@
 								<td>${cafe.address}</td>
 								<td>${cafe.shortDescription}</td>
 								<td>${cafe.type}</td>
-							
 							</tr>
 					</c:forEach>
 				</table>
 			</div>
 		</div>
-		<ul>
-			<li><a href="/profile/createcafe">Create new cafe</a></li>
-			<li><a href="/meal">Add Meal</a></li>
-			<li><a href="/profile/table">Add Table</a></li>
-		</ul>
 	</div>
 </body>
 </html>

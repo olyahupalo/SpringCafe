@@ -51,9 +51,11 @@
 									${table.countOfPeople} 
 								</c:forEach>
 							</td>
+							<sec:authorize access="hasRole('ROLE_CAFE')">
 							<td class="text-center">
-								<a href="/profile/cafe/delete/${cafe.id}" class="btn btn-outline-danger btn-sm">Delete</a>
+								<a href="/cafe/delete/${cafe.id}" class="btn btn-outline-danger btn-sm">Delete</a>
 							</td>
+							</sec:authorize>
 						</tr>
 				</table>
 			</div>

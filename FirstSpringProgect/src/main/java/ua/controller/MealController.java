@@ -21,16 +21,16 @@ import ua.service.CafeService;
 import ua.service.MealService;
 
 @Controller
-@RequestMapping("/profile/meal")
+@RequestMapping("/meal")
 @SessionAttributes("meal")
-public class CafeMealController {
+public class MealController {
 
 	private final MealService service;
 	
 	private final CafeService service2;
 	
 	@Autowired
-	public CafeMealController(MealService service, CafeService service2) {
+	public MealController(MealService service, CafeService service2) {
 		super();
 		this.service = service;
 		this.service2 = service2;
@@ -45,7 +45,7 @@ public class CafeMealController {
 	public String show(Model model, Principal principal) {
 		model.addAttribute("ingredients", service.findAllIngredients());
 		model.addAttribute("cuisines", service.findAllCuisines());
-		model.addAttribute("cafes", service2.findAllViews(principal.getName()));
+		if(principal!=null) model.addAttribute("cafes", service2.findAllViews(principal.getName()));
 		model.addAttribute("meals", service.findAllViews());
 		return "meal";
 	}

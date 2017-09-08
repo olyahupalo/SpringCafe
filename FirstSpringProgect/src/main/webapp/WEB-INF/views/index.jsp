@@ -25,5 +25,8 @@
 			<button>Logout</button>
 		</form:form>
 	</sec:authorize>
+	
+	<a href="/cafe">All Cafes</a>
+	<a href="/meal">All Meals</a>
 </body>
 </html>
