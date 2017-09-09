@@ -8,7 +8,7 @@ import ua.model.filter.SimpleFilter;
 
 public interface CuisineService extends CrudService<Cuisine, Integer>{
 
-	Page<Cuisine > findAll(Pageable pageable);
+	Page<Cuisine> findAll(Pageable pageable);
 	
 	Page<Cuisine> findAll(Pageable pageable, SimpleFilter filter);
 
