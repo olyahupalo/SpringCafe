@@ -75,9 +75,8 @@ public class AdminCuisineController {
 	private String buildParams(Pageable pageable, SimpleFilter filter) {
 		StringBuilder buffer = new StringBuilder();
 		buffer.append("?page=");
-		if(!(service.findAll(pageable, filter).hasContent())&&!(pageable.getPageNumber()==1)){
-			buffer.append(String.valueOf(pageable.getPageNumber()-1));
-			System.out.println(pageable.getPageNumber());
+		if(!(service.findAll(pageable, filter).hasContent())&&!(pageable.getPageNumber()==0)){
+			buffer.append(String.valueOf(pageable.getPageNumber()));
 		} else {
 			buffer.append(String.valueOf(pageable.getPageNumber()+1));
 		}
