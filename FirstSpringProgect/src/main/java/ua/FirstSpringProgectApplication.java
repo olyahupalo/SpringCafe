@@ -11,6 +11,8 @@ import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
+import ua.argument.resolver.UserHandleMethodArgumentResolver;
+
 @ImportAutoConfiguration(classes=WebMvcAutoConfiguration.class)
 @SpringBootApplication
 public class FirstSpringProgectApplication extends WebMvcConfigurerAdapter {
@@ -19,11 +21,15 @@ public class FirstSpringProgectApplication extends WebMvcConfigurerAdapter {
 		SpringApplication.run(FirstSpringProgectApplication.class, args);
 	}
 	
+	@Autowired
+	UserHandleMethodArgumentResolver userResolver;
+	
 	@Override
 	public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
 		PageableHandlerMethodArgumentResolver resolver = new PageableHandlerMethodArgumentResolver();
 		resolver.setOneIndexedParameters(true);
 		argumentResolvers.add(resolver);
+		argumentResolvers.add(userResolver);
 		super.addArgumentResolvers(argumentResolvers);
 }
 }
