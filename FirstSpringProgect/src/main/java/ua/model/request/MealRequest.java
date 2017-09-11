@@ -27,6 +27,8 @@ public class MealRequest {
 	
 	private Cafe cafe;
 	
+	private Integer cafeId;
+	
 	private List<Ingredient> ingredients = new ArrayList<>();
 
 	public Integer getId() {
@@ -108,6 +110,12 @@ public class MealRequest {
 	public void setCafe(Cafe cafe) {
 		this.cafe = cafe;
 	}
-	
-	
+
+	public Integer getCafeId() {
+		return cafeId;
+	}
+
+	public void setCafeId(Integer cafeId) {
+		this.cafeId = cafeId;
+	}
 }

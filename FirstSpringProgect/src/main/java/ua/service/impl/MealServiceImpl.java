@@ -83,6 +83,7 @@ public class MealServiceImpl implements MealService{
 		request.setTitle(meal.getTitle());
 		request.setVersion(meal.getVersion());
 		request.setWeight(String.valueOf(meal.getWeight()));
+		request.setCafeId(meal.getCafe().getId());
 		return request;
 	}
 

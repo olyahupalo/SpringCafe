@@ -28,7 +28,9 @@
 						<th class="text-center">Close</th>
 						<th class="text-center">Meals</th>
 						<th class="text-center">Tables</th>
-						<th class="text-center">Options</th>
+						<sec:authorize access="hasRole('ROLE_CAFE')">
+							<th class="text-center">Options</th>
+						</sec:authorize>
 					</tr>
 						<tr >
 							<td>${cafe.rate}</td>

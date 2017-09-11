@@ -21,10 +21,10 @@ public interface MealRepository extends JpaRepository<Meal, Integer>{
 	@Query("SELECT i.name FROM Ingredient i")
 	List<String> findAllIngredients();
 	
-	@Query("SELECT new ua.model.view.MealView(m.id, m.title, m.description, m.price, m.photoUrl, m.version, c.name, m.weight, cafe.name) FROM Meal m JOIN m.cuisine c JOIN m.cafe cafe")
+	@Query("SELECT new ua.model.view.MealView(m.id, m.title, m.description, m.price, m.photoUrl, m.version, c.name, m.weight, cafe.name, cafe.id) FROM Meal m JOIN m.cuisine c JOIN m.cafe cafe")
 	List<MealView> findAllViews();
 	
-	@Query(value = "SELECT new ua.model.view.MealView(m.id, m.title, m.description, m.price, m.photoUrl, m.version, c.name, m.weight, cafe.name) FROM Meal m JOIN m.cuisine c JOIN m.cafe cafe",
+	@Query(value = "SELECT new ua.model.view.MealView(m.id, m.title, m.description, m.price, m.photoUrl, m.version, c.name, m.weight, cafe.name, cafe.id) FROM Meal m JOIN m.cuisine c JOIN m.cafe cafe",
 			countQuery = "SELECT count(m.id) FROM Meal m JOIN m.cuisine c JOIN m.cafe cafe")
 	Page<MealView> findAllViews(Pageable pageable);
 	

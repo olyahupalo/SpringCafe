@@ -28,7 +28,7 @@
 						</sec:authorize>
 					</tr>
 					<c:forEach var="meal" items="${meals}">
-						<tr>
+						<tr onMouseOver="this.style.backgroundColor='#ECECEE';" onMouseOut="this.style.backgroundColor='white'" onclick="location.href='cafe/${meal.cafeId}'">
 							<td>${meal.title}</td>
 							<td>${meal.description}</td>
 							<td>${meal.price}</td>

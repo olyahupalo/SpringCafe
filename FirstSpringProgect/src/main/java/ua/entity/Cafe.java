@@ -147,6 +147,4 @@ public class Cafe extends AbstractEntityName{
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
-	
 }

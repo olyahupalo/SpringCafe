@@ -23,9 +23,11 @@ public class MealView {
 	
 	private String cafe;
 	
+	private Integer cafeId;
+	
 	private List<String> ingredients;
 	
-	public MealView(Integer id, String title, String description, BigDecimal price, String photoUrl, int version,String cuisine, int weight, String cafe) {
+	public MealView(Integer id, String title, String description, BigDecimal price, String photoUrl, int version,String cuisine, int weight, String cafe, Integer cafeId) {
 		this.id = id;
 		this.title = title;
 		this.description = description;
@@ -35,6 +37,7 @@ public class MealView {
 		this.cuisine = cuisine;
 		this.weight = weight;
 		this.cafe = cafe;
+		this.cafeId = cafeId;
 	}
 
 	public Integer getId() {
@@ -115,6 +118,14 @@ public class MealView {
 
 	public void setCafe(String cafe) {
 		this.cafe = cafe;
+	}
+
+	public Integer getCafeId() {
+		return cafeId;
+	}
+
+	public void setCafeId(Integer cafeId) {
+		this.cafeId = cafeId;
 	}
 	
 }
