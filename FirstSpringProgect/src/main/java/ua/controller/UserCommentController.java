@@ -26,8 +26,6 @@ public class UserCommentController {
 		return new UserComment();
 	}
 	
-	
-	
 	@Autowired
 	public UserCommentController(UserCommentService service) {
 		super();
@@ -36,8 +34,7 @@ public class UserCommentController {
 	
 	@GetMapping
 	public String show(Model model){
-		model.addAttribute("commets", service.findAll());
-		return "cafe";
+		return "comment";
 	}
 	
 	@PostMapping

@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
+import ua.entity.UserComment;
 import ua.model.request.CafeRequest;
 import ua.service.CafeIndexService;
 import ua.service.CafeService;
+import ua.service.UserCommentService;
 import ua.validation.flag.CafeFlag;
 
 @Controller
@@ -24,15 +26,22 @@ public class CafeController {
 
 	private final CafeService service;
 	private final CafeIndexService service2;
+	private final UserCommentService commentService;
 
-	public CafeController(CafeService service, CafeIndexService service2) {
+	public CafeController(CafeService service, CafeIndexService service2, UserCommentService commentService) {
 		this.service = service;
 		this.service2 = service2;
+		this.commentService = commentService;
 	}
 
 	@ModelAttribute("cafe")
 	public CafeRequest getForm() {
 		return new CafeRequest();
+	}
+	
+	@ModelAttribute("comment")
+	public UserComment getCommentForm() {
+		return new UserComment();
 	}
 	
 	@GetMapping("/{id}")
@@ -41,6 +50,7 @@ public class CafeController {
 		model.addAttribute("times", service.findAllTimes());
 		model.addAttribute("meals", service.findAllMeals());
 		model.addAttribute("tables", service.findAllTables());
+		model.addAttribute("comments", commentService.findAll());
 		return "cafe";
 	}
 	
@@ -62,7 +72,7 @@ public class CafeController {
 		service.save(request);
 		return cancel(status);
 	}
-	
+
 	@GetMapping("/cancel")
 	public String cancel(SessionStatus status) {
 		status.setComplete();

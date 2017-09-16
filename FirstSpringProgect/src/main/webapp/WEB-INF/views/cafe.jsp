@@ -174,26 +174,11 @@
 				</table>
 			</div>
 		</div>
-	<form:form action="/comment" method="POST" modelAttribute="comment">
-					<div class="form-group row">
-						<label class="col-2 col-form-label" for="email">Email</label>
-						<div class="col-10">
-							<form:input class="form-control" id="email" path="email"/>
-						</div>
-					</div>
-					<div class="form-group row">
-						<label class="col-2 col-form-label" for="commentTxt">Message:</label>
-						<div class="col-10">
-							<form:input class="form-control" id="commentTxt" path="commentTxt"/>
-						</div>
-					</div>
-					<div class="form-group row">
-						<div class="col-10 mr-left">
-							<button class="btn btn-sm btn-outline-success">Save</button>
-							<a href="/profile/cafe/cancel" class="btn btn-sm btn-outline-warning">Cancel</a>
-						</div>
-					</div>
-				</form:form>
+	<div class="row">
+		<div class="col-2">
+			<a href="/comment" class="btn btn-outline-success btn-sm">Add comment</a>
+		</div>
+	</div>
 	</div>
 </body>
 </html>
