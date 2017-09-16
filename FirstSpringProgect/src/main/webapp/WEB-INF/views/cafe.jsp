@@ -153,6 +153,47 @@
 			</div>
 		</div>
 	</sec:authorize>	
+	<div class="row">
+			<div class="col-12">
+				<table class="table table-bordered">
+					<tr>
+						<th class="text-center">Email</th>
+						<th class="text-center">Comment</th>
+						<th class="text-center">Options</th>
+					</tr>
+					<c:forEach var="comment" items="${comments}">
+					<tr >
+							<td>${comment.email}</td>
+							<td>${comment.commentTxt}</td>
+							<td class="text-center">
+								<a href="/profile/comment/update/${comment.id}" class="btn btn-outline-warning btn-sm">Update</a>
+								<a href="/profile/comment/delete/${comment.id}" class="btn btn-outline-danger btn-sm">Delete</a>
+							</td>
+					</tr>
+					</c:forEach>
+				</table>
+			</div>
+		</div>
+	<form:form action="/comment" method="POST" modelAttribute="comment">
+					<div class="form-group row">
+						<label class="col-2 col-form-label" for="email">Email</label>
+						<div class="col-10">
+							<form:input class="form-control" id="email" path="email"/>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-2 col-form-label" for="commentTxt">Message:</label>
+						<div class="col-10">
+							<form:input class="form-control" id="commentTxt" path="commentTxt"/>
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="col-10 mr-left">
+							<button class="btn btn-sm btn-outline-success">Save</button>
+							<a href="/profile/cafe/cancel" class="btn btn-sm btn-outline-warning">Cancel</a>
+						</div>
+					</div>
+				</form:form>
 	</div>
 </body>
 </html>
