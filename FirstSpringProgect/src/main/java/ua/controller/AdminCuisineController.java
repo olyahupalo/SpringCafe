@@ -5,6 +5,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.support.SessionStatus;
 import ua.entity.Cuisine;
 import ua.model.filter.SimpleFilter;
 import ua.service.CuisineService;
+import ua.validation.flag.CuisineFlag;
 
 @Controller
 @RequestMapping("/admin/cuisine")
@@ -44,6 +47,7 @@ public class AdminCuisineController {
 		model.addAttribute("cuisines", service.findAll(pageable, filter));
 		if(service.findAll(pageable, filter).hasContent()) return "cuisine";
 		else return "redirect:/admin/cuisine"+Params.buildParamsForShow(pageable, filter);
+		
 	}
 	
 	@GetMapping("/delete/{id}")
@@ -53,7 +57,11 @@ public class AdminCuisineController {
 	}
 	
 	@PostMapping
-	public String save(@ModelAttribute("cuisine") Cuisine cuisine, SessionStatus status, @PageableDefault Pageable pageable, @ModelAttribute("filter") SimpleFilter filter) {
+	public String save(@ModelAttribute("cuisine") @Validated(CuisineFlag.class) Cuisine cuisine, SessionStatus status, BindingResult br, Model model, @PageableDefault Pageable pageable, @ModelAttribute("filter") SimpleFilter filter) {
+		if(br.hasErrors()) {
+			System.out.println("HAS ERRORS");
+			return show(model, pageable, filter);
+		}
 		service.save(cuisine);
 		return cancel(status, pageable, filter);
 	}

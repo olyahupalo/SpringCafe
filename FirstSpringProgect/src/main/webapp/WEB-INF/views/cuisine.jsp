@@ -18,6 +18,12 @@
 		<div class="row">
 		<div class="col-3">
 				<form:form action="/admin/cuisine" method="GET" modelAttribute="filter">
+<!-- 					<div class="row"> -->
+<!-- 						<div class="col-10 ml-auto" style="color: red;"> -->
+<%-- 							<form:errors path="name"/> --%>
+<!-- 						</div> -->
+<!-- 					</div> -->
+					
 					<div class="form-group row">
 						<div class="col-12">
 							<form:input class="form-control" path="search" placeholder="Search"/>
@@ -28,6 +34,11 @@
 			<div class="col-9">
 				<form:form action="/admin/cuisine" method="POST" modelAttribute="cuisine">
 					<custom:hiddenInputs excludeParams="name, _csrf"/>
+					<div class="row">
+						<div class="col-10 ml-auto" style="color:red;">
+							<form:errors path="name"/>
+						</div>
+					</div>
 					<div class="form-group row">
 						<label class="col-2 col-form-label" for="name">Name:</label>
 						<div class="col-10">
