@@ -57,11 +57,8 @@ public class AdminCuisineController {
 	}
 	
 	@PostMapping
-	public String save(@ModelAttribute("cuisine") @Validated(CuisineFlag.class) Cuisine cuisine, SessionStatus status, BindingResult br, Model model, @PageableDefault Pageable pageable, @ModelAttribute("filter") SimpleFilter filter) {
-		if(br.hasErrors()) {
-			System.out.println("HAS ERRORS");
-			return show(model, pageable, filter);
-		}
+	public String save(@ModelAttribute("cuisine") @Validated(CuisineFlag.class) Cuisine cuisine, BindingResult br, SessionStatus status,  Model model, @PageableDefault Pageable pageable, @ModelAttribute("filter") SimpleFilter filter) {
+		if(br.hasErrors())return show(model, pageable, filter);
 		service.save(cuisine);
 		return cancel(status, pageable, filter);
 	}

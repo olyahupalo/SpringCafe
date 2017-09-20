@@ -18,12 +18,6 @@
 		<div class="row">
 		<div class="col-3">
 				<form:form action="/admin/cuisine" method="GET" modelAttribute="filter">
-<!-- 					<div class="row"> -->
-<!-- 						<div class="col-10 ml-auto" style="color: red;"> -->
-<%-- 							<form:errors path="name"/> --%>
-<!-- 						</div> -->
-<!-- 					</div> -->
-					
 					<div class="form-group row">
 						<div class="col-12">
 							<form:input class="form-control" path="search" placeholder="Search"/>

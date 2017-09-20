@@ -5,6 +5,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.support.SessionStatus;
 import ua.entity.Ingredient;
 import ua.model.filter.SimpleFilter;
 import ua.service.IngredientService;
+import ua.validation.flag.IngredientsFlag;
 
 @Controller
 @RequestMapping("/admin/ingredient")
@@ -53,7 +56,8 @@ public class AdminIngredientController {
 	}
 	
 	@PostMapping
-	public String save(@ModelAttribute("ingredient") Ingredient ingredient, SessionStatus status, @PageableDefault Pageable pageable, @ModelAttribute("filter") SimpleFilter filter) {
+	public String save(@ModelAttribute("ingredient") @Validated(IngredientsFlag.class) Ingredient ingredient, BindingResult br, SessionStatus status, Model model, @PageableDefault Pageable pageable, @ModelAttribute("filter") SimpleFilter filter) {
+		if(br.hasErrors())return show(model, pageable, filter);
 		service.save(ingredient);
 		return cancel(status, pageable, filter);
 	}

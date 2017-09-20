@@ -1,7 +1,11 @@
 package ua.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,6 +16,7 @@ import org.springframework.web.bind.support.SessionStatus;
 
 import ua.entity.OpenClose;
 import ua.service.OpenCloseService;
+import ua.validation.flag.OpenCloseFlag;
 
 @Controller
 @RequestMapping("/admin/openclose")
@@ -43,7 +48,8 @@ public class AdminOpenCloseController {
 	}
 	
 	@PostMapping
-	public String save(@ModelAttribute("openclose") OpenClose openclose, SessionStatus status) {
+	public String save(@ModelAttribute("openclose") @Validated(OpenCloseFlag.class) OpenClose openclose, BindingResult br, Model model, SessionStatus status) {
+		if(br.hasErrors())return show(model);
 		service.save(openclose);
 		return cancel(status);
 	}
