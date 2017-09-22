@@ -79,12 +79,6 @@
 						</div>
 					</div>
 					<div class="form-group row">
-						<label class="col-2 col-form-label" for="photoUrl">PhotoUrl:</label>
-						<div class="col-10">
-							<form:input class="form-control" id="photoUrl" path="photoUrl"/>
-						</div>
-					</div>
-					<div class="form-group row">
 						<label class="col-2 col-form-label" for="address">Address:</label>
 						<div class="col-10">
 							<form:input class="form-control" id="address" path="address"/>
@@ -150,6 +144,7 @@
 					</div>
 <%-- 					<form:hidden path="user" value=""/> --%>
 				</form:form>
+				
 			</div>
 		</div>
 	</sec:authorize>	

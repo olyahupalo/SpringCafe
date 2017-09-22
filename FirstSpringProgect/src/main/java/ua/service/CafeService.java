@@ -4,6 +4,7 @@ import java.util.List;
 
 import ua.model.view.CafeView;
 import ua.model.request.CafeRequest;
+import ua.model.request.FileRequest;
 
 public interface CafeService{
 	
@@ -16,7 +17,7 @@ public interface CafeService{
 //	List<CafeView> findAllViews();
 	List<CafeView> findAllViews(String email);
 
-	void save(CafeRequest request);
+	void save(CafeRequest request, FileRequest fileRequest);
 	
 	void delete(Integer id);
 	

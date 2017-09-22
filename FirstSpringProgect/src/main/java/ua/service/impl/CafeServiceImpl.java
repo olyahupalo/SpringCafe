@@ -11,16 +11,21 @@ import ua.entity.Type;
 import ua.model.view.CafeView;
 import ua.repository.CafeRepository;
 import ua.service.CafeService;
+import ua.service.FileWritter;
 import ua.model.request.CafeRequest;
+import ua.model.request.FileRequest;
 
 @Service
 public class CafeServiceImpl implements CafeService {
 
 	private final CafeRepository repository;
+	
+	private final FileWritter writer;
 
-	public CafeServiceImpl(CafeRepository repository) {
+	public CafeServiceImpl(CafeRepository repository, FileWritter writer) {
 		super();
 		this.repository = repository;
+		this.writer = writer;
 	}
 
 //	@Override
@@ -47,7 +52,7 @@ public class CafeServiceImpl implements CafeService {
 	}
 	
 	@Override
-	public void save(CafeRequest request) {
+	public void save(CafeRequest request, FileRequest fileRequest) {
 		Cafe cafe = new Cafe();
 		cafe.setAddress(request.getAddress());
 		cafe.setClose(request.getClose());
@@ -58,7 +63,7 @@ public class CafeServiceImpl implements CafeService {
 		cafe.setName(request.getName());
 		cafe.setOpen(request.getOpen());
 		cafe.setPhone(request.getPhone());
-		cafe.setPhotoUrl(request.getPhotoUrl());
+		cafe.setPhotoUrl(writer.writte(fileRequest.getFile()));
 		cafe.setRate(new BigDecimal(request.getRate()));
 		cafe.setVersion(request.getVersion());
 		cafe.setType(Type.valueOf(request.getType().toUpperCase()));

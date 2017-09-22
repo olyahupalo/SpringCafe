@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import ua.model.request.CafeRequest;
+import ua.model.request.FileRequest;
 import ua.service.CafeService;
 import ua.validation.flag.CafeFlag;
 
@@ -36,6 +37,11 @@ public class ProfileCreateCafeConrtoller {
 		return new CafeRequest();
 	}
 	
+	@ModelAttribute("fileRequest")
+	public FileRequest  getFileForm() {
+		return new FileRequest();
+	}
+	
 	@GetMapping
 	public String show(Model model) {
 		model.addAttribute("times", service.findAllTimes());
@@ -43,9 +49,9 @@ public class ProfileCreateCafeConrtoller {
 	}
 	
 	@PostMapping
-	public String save(@ModelAttribute("createcafe") @Validated(CafeFlag.class) CafeRequest request, BindingResult br, Model model, SessionStatus status) {
+	public String save(@ModelAttribute("createcafe") @Validated(CafeFlag.class) CafeRequest request, BindingResult br, @ModelAttribute("fileRequest") FileRequest fileRequest, Model model, SessionStatus status) {
 		if(br.hasErrors()) return show(model);
-		service.save(request);
+		service.save(request, fileRequest);
 		return cancel(status);
 	}
 	

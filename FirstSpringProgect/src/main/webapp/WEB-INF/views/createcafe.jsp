@@ -32,12 +32,6 @@
 						</div>
 					</div>
 					<div class="form-group row">
-						<label class="col-2 col-form-label" for="photoUrl">PhotoUrl:</label>
-						<div class="col-10">
-							<form:input class="form-control" id="photoUrl" path="photoUrl"/>
-						</div>
-					</div>
-					<div class="form-group row">
 						<label class="col-2 col-form-label" for="address">Address:</label>
 						<div class="col-10">
 							<form:input class="form-control" id="address" path="address"/>
@@ -103,6 +97,10 @@
 						</div>
 					</div>
 				</form:form>
+				<form:form action="/profile/createcafe" method="POST" modelAttribute="fileRequest" enctype="multipart/form-data">
+		<input name="file" type="file">
+		<button>Ok</button>
+</form:form>
 			</div>
 		</div>
 	</div>
