@@ -36,7 +36,7 @@
 							<td>${cafe.rate}</td>
 							<td>${cafe.name}</td>
 							<td>${cafe.type}</td>
-							<td>${cafe.photoUrl}</td>
+							<td><img src="/img/${cafe.photoUrl}"></td>
 							<td>${cafe.address}</td>
 							<td>${cafe.fullDescription}</td>
 							<td>${cafe.phone}</td>
@@ -55,7 +55,7 @@
 							</td>
 							<sec:authorize access="hasRole('ROLE_CAFE')">
 							<td class="text-center">
-								<a href="/cafe/delete/${cafe.id}" class="btn btn-outline-danger btn-sm">Delete</a>
+								<a href="/profile/cafe/delete/${cafe.id}" class="btn btn-outline-danger btn-sm">Delete</a>
 							</td>
 							</sec:authorize>
 						</tr>
@@ -65,7 +65,7 @@
 		<sec:authorize access="hasRole('ROLE_CAFE')">
 		<div class="row">
 			<div class="col-12">
-				<form:form action="/profile/cafe" method="POST" modelAttribute="cafe">
+				<form:form action="/profile/cafe" method="POST" modelAttribute="cafe" enctype="multipart/form-data">
 					<div class="form-group row">
 						<label class="col-2 col-form-label" for="rate">Rate:</label>
 						<div class="col-10">
@@ -78,6 +78,7 @@
 							<form:input class="form-control" id="name" path="name"/>
 						</div>
 					</div>
+					<input name="file" type="file">
 					<div class="form-group row">
 						<label class="col-2 col-form-label" for="address">Address:</label>
 						<div class="col-10">

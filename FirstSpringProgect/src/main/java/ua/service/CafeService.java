@@ -2,6 +2,8 @@ package ua.service;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import ua.model.view.CafeView;
 import ua.model.request.CafeRequest;
 import ua.model.request.FileRequest;
@@ -17,10 +19,12 @@ public interface CafeService{
 //	List<CafeView> findAllViews();
 	List<CafeView> findAllViews(String email);
 
-	void save(CafeRequest request, FileRequest fileRequest);
+	void save(CafeRequest request);
 	
 	void delete(Integer id);
 	
 	CafeRequest findOne(Integer id);
+
+//	String writte(MultipartFile file);
 	
 	}

@@ -7,6 +7,7 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 import ua.validation.flag.CuisineFlag;
@@ -22,7 +23,9 @@ public class OpenClose extends AbstractEntity{
 	
 	@OneToMany(mappedBy="close")
 	private List<Cafe> closedCafes = new ArrayList<>();
-	@Pattern(regexp = "([01]?[0-9]|2[0-3]):[0-5][0-9]", message="Невірний формат часу", groups= {OpenCloseFlag.class})
+	
+	//@Pattern(regexp = "([01]?[0-9]|2[0-3]):[0-5][0-9]", message="Невірний формат часу", groups= {OpenCloseFlag.class})
+	@NotNull(message="Невірний формат часу")
 	private LocalTime time;
 	
 	public OpenClose(LocalTime time) {

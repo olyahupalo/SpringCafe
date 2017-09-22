@@ -36,11 +36,7 @@ public class ProfileCreateCafeConrtoller {
 	public CafeRequest getForm() {
 		return new CafeRequest();
 	}
-	
-	@ModelAttribute("fileRequest")
-	public FileRequest  getFileForm() {
-		return new FileRequest();
-	}
+
 	
 	@GetMapping
 	public String show(Model model) {
@@ -49,9 +45,9 @@ public class ProfileCreateCafeConrtoller {
 	}
 	
 	@PostMapping
-	public String save(@ModelAttribute("createcafe") @Validated(CafeFlag.class) CafeRequest request, BindingResult br, @ModelAttribute("fileRequest") FileRequest fileRequest, Model model, SessionStatus status) {
+	public String save(@ModelAttribute("createcafe") @Validated(CafeFlag.class) CafeRequest request, BindingResult br, Model model, SessionStatus status) {
 		if(br.hasErrors()) return show(model);
-		service.save(request, fileRequest);
+		service.save(request);
 		return cancel(status);
 	}
 	

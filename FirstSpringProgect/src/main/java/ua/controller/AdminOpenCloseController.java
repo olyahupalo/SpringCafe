@@ -2,6 +2,7 @@ package ua.controller;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -24,7 +25,8 @@ import ua.validation.flag.OpenCloseFlag;
 public class AdminOpenCloseController {
 
 	private final OpenCloseService service;
-
+	
+	@Autowired
 	public AdminOpenCloseController(OpenCloseService service) {
 		super();
 		this.service = service;
@@ -48,7 +50,7 @@ public class AdminOpenCloseController {
 	}
 	
 	@PostMapping
-	public String save(@ModelAttribute("openclose") @Validated(OpenCloseFlag.class) OpenClose openclose, BindingResult br, Model model, SessionStatus status) {
+	public String save(@ModelAttribute("openclose") @Valid OpenClose openclose, BindingResult br, Model model, SessionStatus status) {
 		if(br.hasErrors())return show(model);
 		service.save(openclose);
 		return cancel(status);

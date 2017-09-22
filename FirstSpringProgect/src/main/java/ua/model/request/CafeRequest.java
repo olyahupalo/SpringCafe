@@ -3,6 +3,8 @@ package ua.model.request;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import ua.entity.Meal;
 import ua.entity.OpenClose;
 import ua.entity.Table;
@@ -37,6 +39,8 @@ public class CafeRequest {
 	private OpenClose close;
 	
 	private User user;
+	
+	private MultipartFile file;
 	
 	private List<Meal> meals =  new ArrayList<>(); 
 	
@@ -169,6 +173,15 @@ public class CafeRequest {
 	public void setTables(List<Table> tables) {
 		this.tables = tables;
 	}
+
+	public MultipartFile getFile() {
+		return file;
+	}
+
+	public void setFile(MultipartFile file) {
+		this.file = file;
+	}
+	
 	
 	
 	

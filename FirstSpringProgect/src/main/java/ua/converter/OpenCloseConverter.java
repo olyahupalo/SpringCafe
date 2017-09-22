@@ -22,6 +22,4 @@ public class OpenCloseConverter implements Converter<String, OpenClose>{
 	public OpenClose convert(String arg0) {
 		return repository.findByTime(LocalTime.parse(arg0));
 	}
-	
-	
 }

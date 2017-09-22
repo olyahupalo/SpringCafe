@@ -18,6 +18,7 @@ public class FileWritterImpl implements FileWritter{
 	@Override
 	public String writte(MultipartFile file) {
 		File fullPath = new File(path+file.getOriginalFilename());
+		System.out.println(fullPath);
 		try {
 			file.transferTo(fullPath);
 		} catch (IllegalStateException | IOException e) {

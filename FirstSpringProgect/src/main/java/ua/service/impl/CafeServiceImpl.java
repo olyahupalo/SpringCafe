@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import ua.entity.Cafe;
 import ua.entity.Type;
@@ -52,7 +53,7 @@ public class CafeServiceImpl implements CafeService {
 	}
 	
 	@Override
-	public void save(CafeRequest request, FileRequest fileRequest) {
+	public void save(CafeRequest request) {
 		Cafe cafe = new Cafe();
 		cafe.setAddress(request.getAddress());
 		cafe.setClose(request.getClose());
@@ -63,7 +64,7 @@ public class CafeServiceImpl implements CafeService {
 		cafe.setName(request.getName());
 		cafe.setOpen(request.getOpen());
 		cafe.setPhone(request.getPhone());
-		cafe.setPhotoUrl(writer.writte(fileRequest.getFile()));
+		cafe.setPhotoUrl(writer.writte(request.getFile()));
 		cafe.setRate(new BigDecimal(request.getRate()));
 		cafe.setVersion(request.getVersion());
 		cafe.setType(Type.valueOf(request.getType().toUpperCase()));
@@ -113,7 +114,7 @@ public class CafeServiceImpl implements CafeService {
 	public List<Integer> findAllTables() {
 		return repository.findAllTables();
 	}
-	
+
 
 
 	
