@@ -3,12 +3,19 @@ package ua.model.request;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.web.multipart.MultipartFile;
 
 import ua.entity.Meal;
 import ua.entity.OpenClose;
 import ua.entity.Table;
 import ua.entity.User;
+import ua.validation.annotation.UniqueCafe;
+import ua.validation.flag.CafeFlag;
+import ua.validation.flag.CuisineFlag;
+import ua.validation.flag.IngredientsFlag;
 
 public class CafeRequest {
 
@@ -16,22 +23,32 @@ public class CafeRequest {
 	
 	private String rate;
 	
+	@NotBlank(message="Це поле має бути заповненим")
+	@Pattern(regexp = "^[A-Z][a-zA-Z0-9]+| *$", message="Назва має починатись з великої букви")
 	private String name;
 	
 	private String photoUrl;
 	
 	private int version;
 	
+	@NotBlank(message="Це поле має бути заповненим")
 	private String address;
 	
+	@NotBlank(message="Це поле має бути заповненим")
 	private String fullDescription;
 	
+	@NotBlank(message="Це поле має бути заповненим")
 	private String shortDescription;
 	
+	@NotBlank(message="Це поле має бути заповненим")
 	private String type;
 	
+	@NotBlank(message="Це поле має бути заповненим")
+	@Pattern(regexp = "[0-9]{13}", message="This field must have 13 numers!")
 	private String phone;
 	
+	@NotBlank(message="Це поле має бути заповненим")
+	@Pattern(regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$", message="Wrong email")
 	private String email;
 	
 	private OpenClose open;

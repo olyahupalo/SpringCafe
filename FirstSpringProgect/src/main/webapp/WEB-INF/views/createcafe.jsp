@@ -32,10 +32,20 @@
 							<form:input class="form-control" id="name" path="name"/>
 						</div>
 					</div>
+					<div class="row">
+						<div class="col-10 ml-auto" style="color: red;">
+							<form:errors path="address"/>
+						</div>
+					</div>
 					<div class="form-group row">
 						<label class="col-2 col-form-label" for="address">Address:</label>
 						<div class="col-10">
 							<form:input class="form-control" id="address" path="address"/>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-10 ml-auto" style="color: red;">
+							<form:errors path="fullDescription"/>
 						</div>
 					</div>
 					<div class="form-group row">
@@ -44,22 +54,47 @@
 							<form:textarea class="form-control" id="fullDescription" path="fullDescription" rows="5"/>
 						</div>
 					</div>
+					<div class="row">
+						<div class="col-10 ml-auto" style="color: red;">
+							<form:errors path="shortDescription"/>
+						</div>
+					</div>
 					<div class="form-group row">
 						<label class="col-2 col-form-label" for="shortDescription">Short Description:</label>
 						<div class="col-10">
 							<form:textarea class="form-control" id="shortDescription" path="shortDescription"/>
 						</div>
 					</div>
+					<div class="row">
+						<div class="col-10 ml-auto" style="color: red;">
+							<form:errors path="type"/>
+						</div>
+					</div>
 					<div class="form-group row">
 						<label class="col-2 col-form-label" for="type">Type:</label>
 						<div class="col-10">
-							<form:input class="form-control" id="type" path="type"/>
+<%-- 							<form:input class="form-control" id="type" path="type"/> --%>
+								<label>Pub <form:radiobutton path="type" value="PUB"/></label>
+								<label>Sushy <form:radiobutton path="type" value="SUSHY"/></label>
+								<label>Bar <form:radiobutton path="type" value="BAR"/></label>
+								<label>Cafe <form:radiobutton path="type" value="CAFE"/></label>
+								<label>Restaurant <form:radiobutton path="type" value="RESTAURANT"/></label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-10 ml-auto" style="color: red;">
+							<form:errors path="phone"/>
 						</div>
 					</div>
 					<div class="form-group row">
 						<label class="col-2 col-form-label" for="phone">Phone:</label>
 						<div class="col-10">
 							<form:input class="form-control" id="phone" path="phone"/>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-10 ml-auto" style="color:red;">
+							<form:errors path="email"/>
 						</div>
 					</div>
 					<div class="form-group row">

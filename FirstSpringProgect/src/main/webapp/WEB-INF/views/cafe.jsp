@@ -65,7 +65,7 @@
 		<sec:authorize access="hasRole('ROLE_CAFE')">
 		<div class="row">
 			<div class="col-12">
-				<form:form action="/profile/cafe" method="POST" modelAttribute="cafe" enctype="multipart/form-data">
+				<form:form action="/cafe" method="POST" modelAttribute="cafe" enctype="multipart/form-data">
 					<div class="form-group row">
 						<label class="col-2 col-form-label" for="rate">Rate:</label>
 						<div class="col-10">
@@ -100,13 +100,25 @@
 					<div class="form-group row">
 						<label class="col-2 col-form-label" for="type">Type:</label>
 						<div class="col-10">
-							<form:input class="form-control" id="type" path="type"/>
+								<div>
+	<%-- 							<form:input class="form-control" id="type" path="type"/> --%>
+									<label>Pub <form:radiobutton path="type" value="PUB"/></label><br>
+									<label>Sushy <form:radiobutton path="type" value="SUSHY"/></label><br>
+									<label>Bar <form:radiobutton path="type" value="BAR"/></label><br>
+									<label>Cafe <form:radiobutton path="type" value="CAFE"/></label><br>
+									<label>Restaurant <form:radiobutton path="type" value="RESTAURANT"/></label>
+								</div>
 						</div>
 					</div>
 					<div class="form-group row">
 						<label class="col-2 col-form-label" for="phone">Phone:</label>
 						<div class="col-10">
 							<form:input class="form-control" id="phone" path="phone"/>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-10 ml-auto" style="color:red;">
+							<form:errors path="email"/>
 						</div>
 					</div>
 					<div class="form-group row">
@@ -140,7 +152,7 @@
 					<div class="form-group row">
 						<div class="col-10 mr-left">
 							<button class="btn btn-sm btn-outline-success">Save</button>
-							<a href="/profile/cafe/cancel" class="btn btn-sm btn-outline-warning">Cancel</a>
+							<a href="/cafe/cancel" class="btn btn-sm btn-outline-warning">Cancel</a>
 						</div>
 					</div>
 <%-- 					<form:hidden path="user" value=""/> --%>

@@ -51,7 +51,7 @@ public class MealController {
 	@GetMapping("/delete/{id}")
 	public String delete(@PathVariable Integer id) {
 		service.delete(id);
-		return "redirect:/profile/meal";
+		return "redirect:/meal";
 	}
 	
 	@PostMapping
@@ -69,6 +69,6 @@ public class MealController {
 	@GetMapping("/cancel")
 	public String cancel(SessionStatus status) {
 		status.setComplete();
-		return "redirect:/profile/meal";
+		return "redirect:/meal";
 	}
 }

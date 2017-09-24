@@ -2,6 +2,8 @@ package ua.controller;
 
 import java.security.Principal;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -45,7 +47,7 @@ public class ProfileCreateCafeConrtoller {
 	}
 	
 	@PostMapping
-	public String save(@ModelAttribute("createcafe") @Validated(CafeFlag.class) CafeRequest request, BindingResult br, Model model, SessionStatus status) {
+	public String save(@ModelAttribute("createcafe") @Valid CafeRequest request, BindingResult br, Model model, SessionStatus status) {
 		if(br.hasErrors()) return show(model);
 		service.save(request);
 		return cancel(status);
@@ -54,6 +56,6 @@ public class ProfileCreateCafeConrtoller {
 	@GetMapping("/cancel")
 	public String cancel(SessionStatus status) {
 		status.setComplete();
-		return "redirect:/profile/createcafe";
+		return "redirect:/profile";
 	}
 }

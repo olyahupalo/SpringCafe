@@ -1,5 +1,7 @@
 package ua.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -27,6 +29,7 @@ public class CafeController {
 	private final CafeService service;
 	private final CafeIndexService service2;
 	private final UserCommentService commentService;
+	private Integer id;
 
 	public CafeController(CafeService service, CafeIndexService service2, UserCommentService commentService) {
 		this.service = service;
@@ -46,6 +49,7 @@ public class CafeController {
 	
 	@GetMapping("/{id}")
 	public String show(@PathVariable Integer id, Model model) {
+		this.id = id;
 		model.addAttribute("cafe", service.findOne(id));
 		model.addAttribute("times", service.findAllTimes());
 		model.addAttribute("meals", service.findAllMeals());
@@ -68,7 +72,9 @@ public class CafeController {
 	
 	@PostMapping
 	public String save(@ModelAttribute("cafe") @Validated(CafeFlag.class) CafeRequest request, BindingResult br, Model model, SessionStatus status) {
-		if(br.hasErrors()) return show(model);
+		if(br.hasErrors()) { 
+			System.out.println("Error");
+			return show(id, model);}
 		service.save(request);
 		return cancel(status);
 	}

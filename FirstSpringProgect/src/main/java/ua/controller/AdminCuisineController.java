@@ -45,7 +45,7 @@ public class AdminCuisineController {
 	@GetMapping
 	public String show(Model model, @PageableDefault Pageable pageable, @ModelAttribute("filter") SimpleFilter filter) {
 		model.addAttribute("cuisines", service.findAll(pageable, filter));
-		if(service.findAll(pageable, filter).hasContent()) return "cuisine";
+		if(service.findAll(pageable, filter).hasContent()||(pageable.getPageNumber()==0)) return "cuisine";
 		else return "redirect:/admin/cuisine"+Params.buildParamsForShow(pageable, filter);
 		
 	}

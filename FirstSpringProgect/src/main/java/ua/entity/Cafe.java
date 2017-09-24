@@ -12,6 +12,10 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Pattern;
+
+import ua.validation.flag.CuisineFlag;
+import ua.validation.flag.IngredientsFlag;
 
 @Entity
 @Table(name="cafe")
