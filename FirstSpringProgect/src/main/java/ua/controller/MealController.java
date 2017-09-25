@@ -3,9 +3,12 @@ package ua.controller;
 
 import java.security.Principal;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -55,7 +58,8 @@ public class MealController {
 	}
 	
 	@PostMapping
-	public String save(@ModelAttribute("meal") MealRequest request, SessionStatus status) {
+	public String save(@ModelAttribute("meal") @Valid MealRequest request, BindingResult br, Model model, Principal principal, SessionStatus status) {
+		if(br.hasErrors()) return show(model, principal);
 		service.save(request);
 		return cancel(status);
 	}

@@ -54,11 +54,21 @@
 		<sec:authorize access="hasRole('ROLE_CAFE')">
 		<div class="row">
 			<div class="col-12">
-				<form:form action="/profile/meal" method="POST" modelAttribute="meal">
+				<form:form action="/meal" method="POST" modelAttribute="meal">
+					<div class="row">
+						<div class="col-10 ml-auto" style="color: red;">
+							<form:errors path="title"/>
+						</div>
+					</div>
 					<div class="form-group row">
 						<label class="col-2 col-form-label" for="title">Title:</label>
 						<div class="col-10">
 							<form:input class="form-control" id="title" path="title"/>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-10 ml-auto" style="color: red;">
+							<form:errors path="description"/>
 						</div>
 					</div>
 					<div class="form-group row">
@@ -67,10 +77,20 @@
 							<form:textarea class="form-control" id="description" path="description" rows="5"/>
 						</div>
 					</div>
+					<div class="row">
+						<div class="col-10 ml-auto" style="color: red;">
+							<form:errors path="price"/>
+						</div>
+					</div>
 					<div class="form-group row">
 						<label class="col-2 col-form-label" for="price">Price:</label>
 						<div class="col-10">
 							<form:input class="form-control" id="price" path="price"/>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-10 ml-auto" style="color: red;">
+							<form:errors path="weight"/>
 						</div>
 					</div>
 					<div class="form-group row">
@@ -79,6 +99,7 @@
 							<form:input class="form-control" id="weight" path="weight"/>
 						</div>
 					</div>
+					
 					<div class="form-group row">
 						<label class="col-2 col-form-label" for="cuisine">Cuisine:</label>
 						<div class="col-10">
