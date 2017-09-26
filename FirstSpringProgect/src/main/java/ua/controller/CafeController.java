@@ -54,7 +54,7 @@ public class CafeController {
 		model.addAttribute("times", service.findAllTimes());
 		model.addAttribute("meals", service.findAllMeals());
 		model.addAttribute("tables", service.findAllTables());
-		model.addAttribute("comments", commentService.findAll());
+		model.addAttribute("comments", service.findAllCommentsByCafeId(id));
 		return "cafe";
 	}
 	

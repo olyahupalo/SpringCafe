@@ -12,6 +12,7 @@ import org.springframework.web.bind.support.SessionStatus;
 
 import ua.entity.Table;
 import ua.entity.UserComment;
+import ua.model.request.UserCommentRequest;
 import ua.service.UserCommentService;
 
 @Controller
@@ -22,8 +23,8 @@ public class UserCommentController {
 	private final UserCommentService service;
 	
 	@ModelAttribute("comment")
-	public UserComment getForm() {
-		return new UserComment();
+	public UserCommentRequest getForm() {
+		return new UserCommentRequest();
 	}
 	
 	@Autowired
@@ -38,8 +39,8 @@ public class UserCommentController {
 	}
 	
 	@PostMapping
-	public String save(@ModelAttribute("comment") UserComment comment, SessionStatus status) {
-		service.save(comment);
+	public String save(@ModelAttribute("comment") UserCommentRequest request, SessionStatus status) {
+		service.save(request);
 		return cancel(status);
 	}
 	

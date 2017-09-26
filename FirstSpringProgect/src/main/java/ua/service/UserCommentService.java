@@ -1,7 +1,9 @@
 package ua.service;
 
-import ua.entity.UserComment;
+import ua.model.request.UserCommentRequest;
 
-public interface UserCommentService extends CrudService<UserComment, Integer>{
+public interface UserCommentService {
+	
+	void save(UserCommentRequest request);
 
 }

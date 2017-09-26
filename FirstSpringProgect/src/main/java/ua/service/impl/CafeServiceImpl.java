@@ -9,6 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import ua.entity.Cafe;
 import ua.entity.Type;
+import ua.entity.UserComment;
 import ua.model.view.CafeView;
 import ua.repository.CafeRepository;
 import ua.service.CafeService;
@@ -113,6 +114,11 @@ public class CafeServiceImpl implements CafeService {
 	@Override
 	public List<Integer> findAllTables() {
 		return repository.findAllTables();
+	}
+
+	@Override
+	public List<UserComment> findAllCommentsByCafeId(Integer id) {
+		return repository.findAllCommentsByCafeId(id);
 	}
 
 

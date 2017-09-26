@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.Query;
 
 import ua.entity.Cafe;
+import ua.entity.UserComment;
 import ua.model.view.CafeView;
 
 public interface CafeRepository extends JpaNameRepository<Cafe>{
@@ -32,5 +33,8 @@ public interface CafeRepository extends JpaNameRepository<Cafe>{
 	
 	@Query("SELECT DISTINCT c FROM Cafe c JOIN FETCH c.open JOIN FETCH c.close WHERE c.id=?1")
 	Cafe findOneRequest(Integer id);
+	
+	@Query("SELECT DISTINCT uc FROM UserComment uc WHERE uc.cafeId=?1")
+	List<UserComment> findAllCommentsByCafeId(Integer id);
 }
  
