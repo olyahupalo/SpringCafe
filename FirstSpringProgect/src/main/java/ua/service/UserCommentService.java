@@ -4,6 +4,6 @@ import ua.model.request.UserCommentRequest;
 
 public interface UserCommentService {
 	
-	void save(UserCommentRequest request);
+	void save(UserCommentRequest request, Integer id);
 
 }

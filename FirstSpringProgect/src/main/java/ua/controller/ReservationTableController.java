@@ -11,40 +11,38 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
-import ua.entity.Table;
-import ua.entity.UserComment;
+import ua.entity.Cuisine;
+import ua.model.request.ReservationTableRequest;
 import ua.model.request.UserCommentRequest;
-import ua.service.UserCommentService;
+import ua.service.ReservationTableService;
 
 @Controller
-@RequestMapping("/comment")
-@SessionAttributes("comment")
-public class UserCommentController {
-
-	private final UserCommentService service;
-	private  Integer cafeId;
+@RequestMapping("/tablereservation")
+@SessionAttributes("tablereservation")
+public class ReservationTableController {
 	
-	@ModelAttribute("comment")
-	public UserCommentRequest getForm() {
-		return new UserCommentRequest();
-	}
+	private final ReservationTableService service;
 	
 	@Autowired
-	public UserCommentController(UserCommentService service) {
+	public ReservationTableController(ReservationTableService service) {
 		super();
 		this.service = service;
 	}
 	
+	@ModelAttribute("tablereservation")
+	public ReservationTableRequest getForm() {
+		return new ReservationTableRequest();
+	}
+	
 	@GetMapping("/{id}")
-	public String show(@PathVariable Integer id, Model model){
-		cafeId = id;
-		System.out.println(cafeId+" "+ id);
-		return "comment";
+	public String show(@PathVariable Integer id, Model model) {
+		model.addAttribute("tables", service.findTablesByCafeId(id));
+		return "tablereservation";
 	}
 	
 	@PostMapping
-	public String save(@ModelAttribute("comment") UserCommentRequest request, SessionStatus status) {
-		service.save(request, cafeId);
+	public String save(@ModelAttribute("tablereservation") ReservationTableRequest request, SessionStatus status) {
+		service.save(request);
 		return cancel(status);
 	}
 	
@@ -54,4 +52,5 @@ public class UserCommentController {
 		return "redirect:/cafe";
 	}
 	
+
 }

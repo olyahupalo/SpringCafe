@@ -63,6 +63,7 @@
 				</table>
 			</div>
 		</div>
+		<a href="/tablereservation/${cafe.id}" class="btn btn-outline-success btn-sm">Resert table</a>
 <%-- 		<sec:authorize access="hasRole('ROLE_CAFE')"> --%>
 <!-- 		<div class="row"> -->
 <!-- 			<div class="col-12"> -->
@@ -102,7 +103,7 @@
 <!-- 						<label class="col-2 col-form-label" for="type">Type:</label> -->
 <!-- 						<div class="col-10"> -->
 <!-- 								<div> -->
-<%-- 	<%-- 							<form:input class="form-control" id="type" path="type"/> --%> --%>
+	<%-- 							<form:input class="form-control" id="type" path="type"/> --%>
 <%-- 									<label>Pub <form:radiobutton path="type" value="PUB"/></label><br> --%>
 <%-- 									<label>Sushy <form:radiobutton path="type" value="SUSHY"/></label><br> --%>
 <%-- 									<label>Bar <form:radiobutton path="type" value="BAR"/></label><br> --%>
@@ -131,7 +132,7 @@
 <!-- 					<div class="form-group row"> -->
 <!-- 						<label class="col-2 col-form-label" for="open">Open:</label> -->
 <!-- 						<div class="col-10"> -->
-<%-- <%-- 							<form:select path="open" items="${times}" class="form-control"/> --%> --%>
+<%-- 							<form:select path="open" items="${times}" class="form-control"/> --%>
 <!-- 							<select class="form-control" id="open" name="open"> -->
 <%-- 								<c:forEach var="time" items="${times}"> --%>
 <%-- 									<option value="${time}">${time}</option> --%>
@@ -142,7 +143,7 @@
 <!-- 					<div class="form-group row"> -->
 <!-- 						<label class="col-2 col-form-label" for="close">Close:</label> -->
 <!-- 						<div class="col-10"> -->
-<%-- <%-- 						<form:select path="close" items="${times}" class="form-control"/> --%> --%>
+<%-- 						<form:select path="close" items="${times}" class="form-control"/> --%>
 <!-- 							<select class="form-control" id="close" name="close"> -->
 <%-- 								<c:forEach var="time" items="${times}"> --%>
 <%-- 									<option value="${time}">${time}</option> --%>
@@ -156,7 +157,7 @@
 <!-- 							<a href="/cafe/cancel" class="btn btn-sm btn-outline-warning">Cancel</a> -->
 <!-- 						</div> -->
 <!-- 					</div> -->
-<%-- <%-- 					<form:hidden path="user" value=""/> --%> --%>
+<%-- 					<form:hidden path="user" value=""/> --%>
 <%-- 				</form:form> --%>
 				
 <!-- 			</div> -->
@@ -176,10 +177,6 @@
 							<td>${comment.email}</td>
 							<td>${comment.commentTxt}</td>
 							<td>${comment.time}</td>
-							<td class="text-center">
-								<a href="/profile/comment/update/${comment.id}" class="btn btn-outline-warning btn-sm">Update</a>
-								<a href="/profile/comment/delete/${comment.id}" class="btn btn-outline-danger btn-sm">Delete</a>
-							</td>
 					</tr>
 					</c:forEach>
 				</table>
@@ -187,7 +184,7 @@
 		</div>
 	<div class="row">
 		<div class="col-2">
-			<a href="/comment/" class="btn btn-outline-success btn-sm">Add comment</a>
+			<a href="/comment/${cafe.id}" class="btn btn-outline-success btn-sm">Add comment</a>
 		</div>
 	</div>
 	</div>

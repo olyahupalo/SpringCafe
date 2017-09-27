@@ -19,9 +19,9 @@ public class UserCommentServiceImpl  implements UserCommentService{
 	}
 
 	@Override
-	public void save(UserCommentRequest request) {
+	public void save(UserCommentRequest request, Integer id) {
 		UserComment userComment= new UserComment();
-		userComment.setCafeId(request.getCafeId());
+		userComment.setCafeId(id);
 		userComment.setCommentTxt(request.getCommentTxt());
 		userComment.setEmail(request.getEmail());
 		userComment.setReplyId(request.getReplyId());
