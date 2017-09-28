@@ -58,7 +58,7 @@ public class CafeServiceImpl implements CafeService {
 		Cafe cafe = new Cafe();
 		cafe.setAddress(request.getAddress());
 		cafe.setClose(request.getClose());
-		cafe.setEmail(request.getEmail().toUpperCase());
+		cafe.setEmail(request.getEmail());
 		cafe.setFullDescription(request.getFullDescription());
 		cafe.setShortDescription(request.getShortDescription());
 		cafe.setId(request.getId());

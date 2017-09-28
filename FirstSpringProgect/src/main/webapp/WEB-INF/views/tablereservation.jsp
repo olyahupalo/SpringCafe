@@ -31,9 +31,9 @@
 					</div>
 					
 					<div class="form-group row">
-					<label class="col-2 col-form-label" for="table">Cuisine:</label>
+					<label class="col-2 col-form-label" for="table">Choose table size(count of people):</label>
 						<div class="col-10">
-							<form:select path="table" items="${tables}" class="form-control"/>
+							<form:select path="table" items="${tables}" class="form-control" itemLabel="countOfPeople" itemValue="id"/>
 						</div>
 					</div>
 					<div class="form-group row">

@@ -28,6 +28,7 @@ public class ReservationTableImpl implements ReservationTableService{
 		reservationTable.setEmail(request.getEmail());
 		reservationTable.setName(request.getName());
 		reservationTable.setPhone(request.getPhone());
+		request.getTable().setIsFree(false);
 		reservationTable.setTable(request.getTable());
 		reservationTable.setTime(LocalDateTime.now());
 		repository.save(reservationTable);

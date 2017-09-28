@@ -63,7 +63,7 @@
 				</table>
 			</div>
 		</div>
-		<a href="/tablereservation/${cafe.id}" class="btn btn-outline-success btn-sm">Resert table</a>
+		<a href="/tablereservation/${cafe.id}" class="btn btn-outline-success btn-sm">Reserv a table</a>
 <%-- 		<sec:authorize access="hasRole('ROLE_CAFE')"> --%>
 <!-- 		<div class="row"> -->
 <!-- 			<div class="col-12"> -->
@@ -177,6 +177,7 @@
 							<td>${comment.email}</td>
 							<td>${comment.commentTxt}</td>
 							<td>${comment.time}</td>
+							<td><a href="/commentreply/${comment.id}" class="btn btn-outline-success btn-sm">Add reply</a></td>
 					</tr>
 					</c:forEach>
 				</table>
