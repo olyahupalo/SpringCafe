@@ -45,7 +45,7 @@
 					</div>
 					<div class="form-group row">
 						<div class="col-12">
-							<form:checkboxes items="${meals}" path="mealsIds" element="div" itemLabel="name" itemValue="id"/>
+							<form:checkboxes items="${meals}" path="mealsIds" element="div" itemLabel="title" itemValue="id"/>
 						</div>
 					</div>
 					<div class="form-group row">
@@ -67,7 +67,7 @@
 						<th class="text-center">Short Description</th>
 						<th class="text-center">Type</th>
 					</tr>
-					<c:forEach var="cafe" items="${allcafes}">
+					<c:forEach var="cafe" items="${allcafes.content}">
 							<tr onMouseOver="this.style.backgroundColor='#ECECEE';" onMouseOut="this.style.backgroundColor='white'" onclick="location.href='cafe/${cafe.id}'">
 								<td>${cafe.rate}</td>
 								<td>${cafe.name}</td>

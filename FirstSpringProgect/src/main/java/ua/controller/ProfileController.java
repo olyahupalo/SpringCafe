@@ -39,6 +39,7 @@ public class ProfileController {
 	@GetMapping
 	public String show(Model model, Principal principal) {
 		model.addAttribute("cafes", service.findAllViewsbyLogin(principal.getName()));
+//		model.addAttribute("cafes", service.findAllViews());
 		return "profile";
 	}
 	

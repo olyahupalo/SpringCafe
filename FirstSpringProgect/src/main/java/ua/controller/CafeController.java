@@ -2,6 +2,8 @@ package ua.controller;
 
 import javax.validation.Valid;
 
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,9 +17,12 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import ua.entity.UserComment;
+import ua.model.filter.CafeFilter;
 import ua.model.request.CafeRequest;
+import ua.repository.CafeFilterRepositoty;
 import ua.service.CafeIndexService;
 import ua.service.CafeService;
+import ua.service.MealService;
 import ua.service.UserCommentService;
 import ua.validation.flag.CafeFlag;
 
@@ -28,12 +33,21 @@ public class CafeController {
 
 	private final CafeService service;
 	private final CafeIndexService service2;
+	private final CafeFilterRepositoty repositoty;
+	private final MealService mealService;
+	
 	private final UserCommentService commentService;
 	private Integer id;
 
-	public CafeController(CafeService service, CafeIndexService service2, UserCommentService commentService) {
+	
+
+	public CafeController(CafeService service, CafeIndexService service2, CafeFilterRepositoty repositoty,
+			MealService mealService, UserCommentService commentService) {
+		super();
 		this.service = service;
 		this.service2 = service2;
+		this.repositoty = repositoty;
+		this.mealService = mealService;
 		this.commentService = commentService;
 	}
 
@@ -47,6 +61,12 @@ public class CafeController {
 		return new UserComment();
 	}
 	
+	@ModelAttribute("cafeFilter")
+	public CafeFilter getFilter() {
+		return new CafeFilter();
+	}
+	
+	
 	@GetMapping("/{id}")
 	public String show(@PathVariable Integer id, Model model) {
 		this.id = id;
@@ -59,10 +79,26 @@ public class CafeController {
 	}
 	
 	@GetMapping
-	public String show(Model model) {
-		model.addAttribute("allcafes", service2.findAllViews());
+	public String show(Model model, @ModelAttribute("cafeFilter") CafeFilter filter, @PageableDefault Pageable pageable) {
+		System.out.println("SYSO: " + repositoty.findAll(filter, pageable));
+		if(repositoty.findAll(filter, pageable)==null) { 
+			model.addAttribute("allcafes", service2.findAllViews());
+			
+		} else {
+//			model.addAttribute("allcafes", service2.findAllViews());
+//			syso
+			model.addAttribute("meals", mealService.findAllViews());
+			model.addAttribute("allcafes", repositoty.findAll(filter, pageable));
+		}
 		return "allcafes";
 	}
+	
+//	@GetMapping
+//	public String show(Model model) {
+//		model.addAttribute("allcafes", service2.findAllViews());
+//		return "allcafes";
+//	}
+	
 	
 	@GetMapping("/delete/{id}")
 	public String delete(@PathVariable Integer id) {
