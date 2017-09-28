@@ -2,6 +2,7 @@ package ua.repository.impl;
 
 import static org.springframework.data.jpa.repository.query.QueryUtils.toOrders;
 import java.math.BigDecimal;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +21,8 @@ import org.springframework.stereotype.Repository;
 
 import ua.entity.Cafe;
 import ua.entity.Meal;
+import ua.entity.OpenClose;
+import ua.entity.Table;
 import ua.model.filter.CafeFilter;
 import ua.model.view.CafeIndexView;
 import ua.repository.CafeFilterRepositoty;
@@ -39,7 +42,9 @@ public class CafeFilterRepositoryImpl implements CafeFilterRepositoty{
 		PredicateBuilder builder = new PredicateBuilder(filter, cb, root);
 		Predicate predicate = builder.toPredicate();
 		if(predicate!=null) cq.where(predicate);
+		
 		cq.orderBy(toOrders(pageable.getSort(), root, cb));
+		cq.distinct(true);
 		List<CafeIndexView> content = em.createQuery(cq)
 				.setFirstResult(pageable.getPageNumber())
 				.setMaxResults(pageable.getPageSize())
@@ -97,11 +102,42 @@ public class CafeFilterRepositoryImpl implements CafeFilterRepositoty{
 			}
 		}
 		
+		void findByMinCount(){
+			if(!filter.getMinCount().isEmpty()) {
+				Join<Cafe, Table> join = root.join("tables");
+				predicates.add(cb.ge(join.get("countOfPeople"), Integer.parseInt(filter.getMinCount())));
+				
+			}
+		}
+		
+		void findByMaxCount(){
+			if(!filter.getMaxCount().isEmpty()) {
+				Join<Cafe, Table> join = root.join("tables");
+				predicates.add(cb.le(join.get("countOfPeople"),Integer.parseInt(filter.getMaxCount())));
+				
+			}
+		}
+		
+//		void findByMinOpen() {
+//			if(!filter.getMinOpen().isEmpty()) {
+//				Join<Cafe, OpenClose> join = root.join("open");
+////				predicates.add(((LocalTime.parse(join.get("time").toString())).isAfter(LocalTime.parse(filter.getMinOpen()))));
+////				predicates.add(join.get("time").in(arg0))
+//				predicates.add(Predicate.)
+//			}
+//			
+//		}
+	
+		
+		
+		
 		Predicate toPredicate() {
 			findByMinRate();
 			findByMaxRate();
 			findByTypes();
 			findByMeals();
+			findByMinCount();
+			findByMaxCount();
 			return cb.and(predicates.stream().toArray(Predicate[]::new));
 		}
 

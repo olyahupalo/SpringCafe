@@ -10,6 +10,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
+import ua.validation.annotation.UniqueOpenClose;
 import ua.validation.flag.CuisineFlag;
 import ua.validation.flag.IngredientsFlag;
 import ua.validation.flag.OpenCloseFlag;
@@ -25,7 +26,9 @@ public class OpenClose extends AbstractEntity{
 	private List<Cafe> closedCafes = new ArrayList<>();
 	
 	//@Pattern(regexp = "([01]?[0-9]|2[0-3]):[0-5][0-9]", message="Невірний формат часу", groups= {OpenCloseFlag.class})
+	
 	@NotNull(message="Невірний формат часу")
+	@UniqueOpenClose(message="This time already exist in database!")
 	private LocalTime time;
 	
 	public OpenClose(LocalTime time) {

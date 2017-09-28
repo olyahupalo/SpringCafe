@@ -25,6 +25,14 @@
 						</div>
 					</div>
 					<div class="form-group row">
+						<div class="col-6">
+							<form:input path="minCount" class="form-control" placeholder="Min Count"/>
+						</div>
+						<div class="col-6">
+							<form:input path="maxCount" class="form-control" placeholder="Max Count"/>
+						</div>
+					</div>
+					<div class="form-group row">
 						<div class="col-12">
 							<div>
 								<label>Pub <form:checkbox path="types" value="PUB"/></label>
