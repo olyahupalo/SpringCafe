@@ -125,12 +125,20 @@ public class CafeFilterRepositoryImpl implements CafeFilterRepositoty{
 		void findByMinOpen() {
 			if(!filter.getMinOpen().isEmpty()) {
 				Join<Cafe, OpenClose> join = root.join("open");
-				//predicates.add(cb.gt(join.get("time"), LocalTime.parse(filter.getMinOpen())));
+				predicates.add(cb.greaterThanOrEqualTo(join.get("time"), LocalTime.parse(filter.getMinOpen())));
 				//https://docs.oracle.com/cd/E19226-01/820-7627/gjixa/index.html
 			}
 			
 		}
 	
+		void findByMaxOpen() {
+			if(!filter.getMaxOpen().isEmpty()) {
+				Join<Cafe, OpenClose> join = root.join("open");
+				predicates.add(cb.lessThanOrEqualTo(join.get("time"), LocalTime.parse(filter.getMaxOpen())));
+				//https://docs.oracle.com/cd/E19226-01/820-7627/gjixa/index.html
+			}
+			
+		}
 		
 		
 		
@@ -142,6 +150,8 @@ public class CafeFilterRepositoryImpl implements CafeFilterRepositoty{
 			findByMeals();
 			findByMinCount();
 			findByMaxCount();
+			findByMinOpen();
+			findByMaxOpen();
 			return cb.and(predicates.stream().toArray(Predicate[]::new));
 		}
 

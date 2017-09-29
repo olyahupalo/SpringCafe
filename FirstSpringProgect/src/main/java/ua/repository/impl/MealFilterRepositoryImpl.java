@@ -38,8 +38,9 @@ public class MealFilterRepositoryImpl implements MealFilterRepository{
 		CriteriaBuilder cb = em.getCriteriaBuilder();
 		CriteriaQuery<MealView> cq = cb.createQuery(MealView.class);
 		Root<Meal> root = cq.from(Meal.class);
-		//Integer id, String title, String description, BigDecimal price, String photoUrl, int version,String cuisine, int weight, String cafe, Integer cafeId)
-		cq.multiselect(root.get("id"), root.get("title"), root.get("description"), root.get("price"), root.get("photoUrl"), root.get("version"), root.get("cuisine"), root.get("weight"), root.get("cafe"), root.get("cafeId"));		
+		Join<Meal, Cafe> join = root.join("cafe");
+		//(Integer id, String title, String description, BigDecimal price, String photoUrl, int version, String cuisine, int weight, String cafe, Integer cafeId)
+		cq.multiselect(root.get("id"), root.get("title"), root.get("description"), root.get("price"), root.get("photoUrl"), root.get("version"), root.get("cuisine"), root.get("weight"), join.get("name"), join.get("id"));		
 		PredicateBuilder builder = new PredicateBuilder(filter, cb, root);
 		Predicate predicate = builder.toPredicate();
 		if(predicate!=null) cq.where(predicate);
@@ -113,9 +114,9 @@ public class MealFilterRepositoryImpl implements MealFilterRepository{
 		}
 		
 		void findByCafes() {
-			if(!filter.getCafes().isEmpty()){
+			if(!filter.getCafesIds().isEmpty()){
 				Join<Meal, Cafe> join = root.join("cafe");
-				predicates.add(join.get("cafe").in(filter.getCafes()));
+				predicates.add(join.get("cafe").in(filter.getCafesIds()));
 			}
 		}
 		
@@ -125,8 +126,6 @@ public class MealFilterRepositoryImpl implements MealFilterRepository{
 				predicates.add(join.get("ingredients").in(filter.getIngredientsIds()));
 			}
 		}
-	
-		
 		
 		Predicate toPredicate() {
 			findByTitle();

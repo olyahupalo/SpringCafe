@@ -17,6 +17,12 @@ public interface MealService {
 	
 	List<String> findAllIngredients();
 	
+	List<Integer> findAllCuisinesIds();
+	
+	List<Integer> findAllCafesIds();
+	
+	List<Integer> findAllIngredientsIds();
+	
 	List<MealView> findAllViews();
 	
 	void save(MealRequest request);

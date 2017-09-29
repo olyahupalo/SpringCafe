@@ -23,7 +23,7 @@ public class MealFilter {
 	
 	private List<Integer> ingredientsIds = new ArrayList<>();
 	
-	private List<Integer> cafes = new ArrayList<>();
+	private List<Integer> cafesIds = new ArrayList<>();
 
 	public String getTitle() {
 		return title;
@@ -85,13 +85,14 @@ public class MealFilter {
 		this.ingredientsIds = ingredientsIds;
 	}
 
-	public List<Integer> getCafes() {
-		return cafes;
+	public List<Integer> getCafesIds() {
+		return cafesIds;
 	}
 
-	public void setCafes(List<Integer> cafes) {
-		this.cafes = cafes;
+	public void setCafesIds(List<Integer> cafesIds) {
+		this.cafesIds = cafesIds;
 	}
+
 
 
 	

@@ -52,6 +52,9 @@ public class MealController {
 
 	@GetMapping
 	public String show(Model model, Principal principal, @ModelAttribute("mealFilter") MealFilter filter, @PageableDefault Pageable pageable) {
+		model.addAttribute("ingredientsIds", service.findAllIngredientsIds());
+		model.addAttribute("cuisinesIds", service.findAllCuisinesIds());
+		model.addAttribute("cafesIds", service.findAllCafesIds());
 		model.addAttribute("ingredients", service.findAllIngredients());
 		model.addAttribute("cuisines", service.findAllCuisines());
 		if(principal!=null) model.addAttribute("cafes", service2.findAllViews(principal.getName()));

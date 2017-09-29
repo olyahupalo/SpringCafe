@@ -3,6 +3,8 @@ package ua.model.view;
 import java.math.BigDecimal;
 import java.util.List;
 
+import ua.entity.Cuisine;
+
 public class MealView {
 
 	private Integer id;
@@ -27,14 +29,14 @@ public class MealView {
 	
 	private List<String> ingredients;
 	
-	public MealView(Integer id, String title, String description, BigDecimal price, String photoUrl, int version,String cuisine, int weight, String cafe, Integer cafeId) {
+	public MealView(Integer id, String title, String description, BigDecimal price, String photoUrl, int version, Cuisine cuisine, int weight, String cafe, Integer cafeId) {
 		this.id = id;
 		this.title = title;
 		this.description = description;
 		this.price = price;
 		this.photoUrl = photoUrl;
 		this.version = version;
-		this.cuisine = cuisine;
+		this.cuisine = cuisine.getName();
 		this.weight = weight;
 		this.cafe = cafe;
 		this.cafeId = cafeId;

@@ -39,17 +39,17 @@
 					</div>
 					<div class="form-group row">
 						<div class="col-12">
-							<form:checkboxes items="${cuisines}" path="cuisinesIds" element="div" itemLabel="name" itemValue="id"/>
+							<form:checkboxes items="${cuisinesIds}" path="cuisinesIds" element="div"/>
 						</div>
 					</div>
 					<div class="form-group row">
 						<div class="col-12">
-							<form:checkboxes items="${ingredients}" path="ingredientsIds" element="div" itemLabel="name" itemValue="id"/>
+							<form:checkboxes items="${ingredientsIds}" path="ingredientsIds" element="div"/>
 						</div>
 					</div>
 					<div class="form-group row">
 						<div class="col-12">
-							<form:checkboxes items="${cafes}" path="cafesIds" element="div" itemLabel="name" itemValue="id"/>
+							<form:checkboxes items="${cafesIds}" path="cafesIds" element="div"/>
 						</div>
 					</div>
 					<div class="form-group row">

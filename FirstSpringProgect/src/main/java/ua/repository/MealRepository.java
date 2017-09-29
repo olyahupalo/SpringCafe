@@ -21,10 +21,19 @@ public interface MealRepository extends JpaRepository<Meal, Integer>{
 	@Query("SELECT i.name FROM Ingredient i")
 	List<String> findAllIngredients();
 	
-	@Query("SELECT new ua.model.view.MealView(m.id, m.title, m.description, m.price, m.photoUrl, m.version, c.name, m.weight, cafe.name, cafe.id) FROM Meal m JOIN m.cuisine c JOIN m.cafe cafe")
+	@Query("SELECT c.id FROM Cuisine c")
+	List<Integer> findAllCuisinesIds();
+	
+	@Query("SELECT c.id FROM Cafe c")
+	List<Integer> findAllCafesIds();
+	
+	@Query("SELECT i.id FROM Ingredient i")
+	List<Integer> findAllIngredientsIds();
+	
+	@Query("SELECT new ua.model.view.MealView(m.id, m.title, m.description, m.price, m.photoUrl, m.version, c , m.weight, cafe.name, cafe.id) FROM Meal m JOIN m.cuisine c JOIN m.cafe cafe")
 	List<MealView> findAllViews();
 	
-	@Query(value = "SELECT new ua.model.view.MealView(m.id, m.title, m.description, m.price, m.photoUrl, m.version, c.name, m.weight, cafe.name, cafe.id) FROM Meal m JOIN m.cuisine c JOIN m.cafe cafe",
+	@Query(value = "SELECT new ua.model.view.MealView(m.id, m.title, m.description, m.price, m.photoUrl, m.version, c, m.weight, cafe.name, cafe.id) FROM Meal m JOIN m.cuisine c JOIN m.cafe cafe",
 			countQuery = "SELECT count(m.id) FROM Meal m JOIN m.cuisine c JOIN m.cafe cafe")
 	Page<MealView> findAllViews(Pageable pageable);
 	

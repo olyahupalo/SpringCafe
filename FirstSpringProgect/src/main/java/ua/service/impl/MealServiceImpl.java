@@ -100,4 +100,19 @@ public class MealServiceImpl implements MealService{
 		return filterRepository.findAll(filter, pageable);
 	}
 
+	@Override
+	public List<Integer> findAllCuisinesIds() {
+		return repository.findAllCuisinesIds();
+	}
+
+	@Override
+	public List<Integer> findAllCafesIds() {
+		return repository.findAllCuisinesIds();
+	}
+
+	@Override
+	public List<Integer> findAllIngredientsIds() {
+		return repository.findAllIngredientsIds();
+	}
+
 }
