@@ -23,6 +23,7 @@ import ua.repository.CafeFilterRepositoty;
 import ua.service.CafeIndexService;
 import ua.service.CafeService;
 import ua.service.MealService;
+import ua.service.OrderService;
 import ua.service.UserCommentService;
 import ua.validation.flag.CafeFlag;
 
@@ -34,6 +35,8 @@ public class CafeController {
 	private final CafeService service;
 	private final CafeIndexService service2;
 	private final MealService mealService;
+	
+	
 	
 	private final UserCommentService commentService;
 	private Integer id;
@@ -74,6 +77,15 @@ public class CafeController {
 		return "cafe";
 	}
 	
+//	@GetMapping("/{id}/order")
+//	public String showOrder(@PathVariable Integer id, Model model) {
+//		model.addAttribute("meals", orderService.findAllMealsByCafeId(id));
+//		model.addAttribute("tables", orderService.findAllTablesByCafeId(id));
+//		model.addAttribute("orders", orderService.findAll());
+//		return "order";
+//	}
+	
+	
 	@GetMapping
 	public String show(Model model, @ModelAttribute("cafeFilter") CafeFilter filter, @PageableDefault Pageable pageable) {
 		model.addAttribute("meals", mealService.findAllViews());
@@ -103,6 +115,9 @@ public class CafeController {
 		service.save(request);
 		return cancel(status);
 	}
+	
+
+	
 
 	@GetMapping("/cancel")
 	public String cancel(SessionStatus status) {

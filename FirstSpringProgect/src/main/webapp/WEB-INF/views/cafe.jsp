@@ -9,6 +9,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 <title>Cafe</title>
+
+
 </head>
 <body>
 	<div class="container">
@@ -188,6 +190,10 @@
 			<a href="/comment/${cafe.id}" class="btn btn-outline-success btn-sm">Add comment</a>
 		</div>
 	</div>
+	<sec:authorize access="hasRole('ROLE_CAFE')">
+		<a href="/cafe/${cafe.id}/order" class="btn btn-outline-success btn-sm">ORDERS</a>					
+	</sec:authorize>
+	
 	</div>
 </body>
 </html>
