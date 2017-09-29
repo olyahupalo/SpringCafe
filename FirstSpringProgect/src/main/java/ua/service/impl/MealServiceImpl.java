@@ -3,12 +3,16 @@ package ua.service.impl;
 import java.math.BigDecimal;
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import ua.entity.Meal;
+import ua.model.filter.MealFilter;
 import ua.model.request.MealRequest;
 import ua.model.view.MealView;
+import ua.repository.MealFilterRepository;
 import ua.repository.MealRepository;
 import ua.service.MealService;
 
@@ -16,9 +20,13 @@ import ua.service.MealService;
 public class MealServiceImpl implements MealService{
 
 	private final MealRepository repository;
+	
+	private final MealFilterRepository filterRepository;
 
-	public MealServiceImpl(MealRepository repository) {
+	public MealServiceImpl(MealRepository repository, MealFilterRepository filterRepository) {
+		super();
 		this.repository = repository;
+		this.filterRepository = filterRepository;
 	}
 
 	@Override
@@ -85,6 +93,11 @@ public class MealServiceImpl implements MealService{
 		request.setWeight(String.valueOf(meal.getWeight()));
 		request.setCafeId(meal.getCafe().getId());
 		return request;
+	}
+
+	@Override
+	public Page<MealView> findAll(MealFilter filter, Pageable pageable) {
+		return filterRepository.findAll(filter, pageable);
 	}
 
 }

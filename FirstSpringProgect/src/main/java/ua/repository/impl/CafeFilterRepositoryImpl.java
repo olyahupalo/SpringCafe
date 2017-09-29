@@ -75,7 +75,11 @@ public class CafeFilterRepositoryImpl implements CafeFilterRepositoty{
 			this.root = root;
 		}
 		
-		
+		void findByName() {
+			if(!filter.getName().isEmpty()) {
+				predicates.add(cb.equal(root.get("name"), filter.getName()));
+			}
+		}
 		
 		void findByMinRate() {
 			if(!filter.getMinRate().isEmpty()) {
@@ -118,20 +122,20 @@ public class CafeFilterRepositoryImpl implements CafeFilterRepositoty{
 			}
 		}
 		
-//		void findByMinOpen() {
-//			if(!filter.getMinOpen().isEmpty()) {
-//				Join<Cafe, OpenClose> join = root.join("open");
-////				predicates.add(((LocalTime.parse(join.get("time").toString())).isAfter(LocalTime.parse(filter.getMinOpen()))));
-////				predicates.add(join.get("time").in(arg0))
-//				predicates.add(Predicate.)
-//			}
-//			
-//		}
+		void findByMinOpen() {
+			if(!filter.getMinOpen().isEmpty()) {
+				Join<Cafe, OpenClose> join = root.join("open");
+				//predicates.add(cb.gt(join.get("time"), LocalTime.parse(filter.getMinOpen())));
+				//https://docs.oracle.com/cd/E19226-01/820-7627/gjixa/index.html
+			}
+			
+		}
 	
 		
 		
 		
 		Predicate toPredicate() {
+			findByName();
 			findByMinRate();
 			findByMaxRate();
 			findByTypes();

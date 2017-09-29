@@ -13,6 +13,8 @@ public class CafeFilter {
 	
 	private static final Pattern DECIMAL_PATTERN = Pattern.compile("^([0-9]{1,18}\\.[0-9]{0,2})|([0-9]{1,18}\\,[0-9]{0,2})|([0-9]{1,18})$");
 
+	private String name = "";
+	
 	private String minRate = "";
 	
 	private String maxRate = "";
@@ -32,6 +34,15 @@ public class CafeFilter {
 	private String maxCount  = "";
 	
 	private List<Integer> mealsIds  = new ArrayList<>();
+	
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 
 	public String getMinRate() {
 		return minRate;
@@ -50,8 +61,6 @@ public class CafeFilter {
 		if(DECIMAL_PATTERN.matcher(maxRate).matches())
 		this.maxRate = maxRate;
 	}
-
-
 
 	public List<Type> getTypes() {
 		return types;

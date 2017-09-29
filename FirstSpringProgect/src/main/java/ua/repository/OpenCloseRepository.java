@@ -9,4 +9,6 @@ public interface OpenCloseRepository extends JpaRepository<OpenClose, Integer>{
 	
 	OpenClose findByTime(LocalTime time);
 	
+	
+	
 }

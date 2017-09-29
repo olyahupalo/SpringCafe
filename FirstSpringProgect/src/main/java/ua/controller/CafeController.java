@@ -33,20 +33,16 @@ public class CafeController {
 
 	private final CafeService service;
 	private final CafeIndexService service2;
-	private final CafeFilterRepositoty repositoty;
 	private final MealService mealService;
 	
 	private final UserCommentService commentService;
 	private Integer id;
 
-	
-
-	public CafeController(CafeService service, CafeIndexService service2, CafeFilterRepositoty repositoty,
+	public CafeController(CafeService service, CafeIndexService service2,
 			MealService mealService, UserCommentService commentService) {
 		super();
 		this.service = service;
 		this.service2 = service2;
-		this.repositoty = repositoty;
 		this.mealService = mealService;
 		this.commentService = commentService;
 	}
@@ -80,18 +76,11 @@ public class CafeController {
 	
 	@GetMapping
 	public String show(Model model, @ModelAttribute("cafeFilter") CafeFilter filter, @PageableDefault Pageable pageable) {
-		System.out.println("SYSO: " + repositoty.findAll(filter, pageable));
-		if(repositoty.findAll(filter, pageable)==null) { 
-			model.addAttribute("allcafes", service2.findAllViews());
-			
-		} else {
-//			model.addAttribute("allcafes", service2.findAllViews());
-//			syso
-			model.addAttribute("meals", mealService.findAllViews());
-			model.addAttribute("allcafes", repositoty.findAll(filter, pageable));
-		}
+		model.addAttribute("meals", mealService.findAllViews());
+		model.addAttribute("allcafes", service2.findAll(filter, pageable));
 		return "allcafes";
 	}
+	
 	
 //	@GetMapping
 //	public String show(Model model) {

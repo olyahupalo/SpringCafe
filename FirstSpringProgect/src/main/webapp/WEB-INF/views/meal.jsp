@@ -3,6 +3,7 @@
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="custom" uri="/WEB-INF/tags/implicit.tld"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,6 +15,54 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-12">
+				<form:form action="/meal" method="GET" modelAttribute="mealFilter">
+					<div class="form-group row">
+						<div class="col-6">
+							<form:input path="title" class="form-control" placeholder="Title "/>
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="col-6">
+							<form:input path="minPrice" class="form-control" placeholder="Min price"/>
+						</div>
+						<div class="col-6">
+							<form:input path="maxPrice" class="form-control" placeholder="Max price"/>
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="col-6">
+							<form:input path="minWeight" class="form-control" placeholder="Min Weight"/>
+						</div>
+						<div class="col-6">
+							<form:input path="maxWeight" class="form-control" placeholder="Max Weight"/>
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="col-12">
+							<form:checkboxes items="${cuisines}" path="cuisinesIds" element="div" itemLabel="name" itemValue="id"/>
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="col-12">
+							<form:checkboxes items="${ingredients}" path="ingredientsIds" element="div" itemLabel="name" itemValue="id"/>
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="col-12">
+							<form:checkboxes items="${cafes}" path="cafesIds" element="div" itemLabel="name" itemValue="id"/>
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="col-12">
+        					<button type="submit" class="btn btn-outline-success btn-sm">Search</button>
+      					</div>
+					</div>
+				</form:form>
+			</div>
+		
+		
+		
+			<div class="col-9">
 				<table class="table table-bordered">
 					<tr>
 						<th class="text-center">Title</th>
@@ -27,8 +76,8 @@
 							<th class="text-center">Options</th>
 						</sec:authorize>
 					</tr>
-					<c:forEach var="meal" items="${meals}">
-						<tr onMouseOver="this.style.backgroundColor='#ECECEE';" onMouseOut="this.style.backgroundColor='white'" onclick="location.href='cafe/${meal.cafeId}'">
+					<c:forEach var="meal" items="${meals.content}">
+<%-- 						<tr onMouseOver="this.style.backgroundColor='#ECECEE';" onMouseOut="this.style.backgroundColor='white'" onclick="location.href='cafe/${meal.cafeId}'"> --%>
 							<td>${meal.title}</td>
 							<td>${meal.description}</td>
 							<td>${meal.price}</td>
@@ -50,6 +99,26 @@
 					</c:forEach>
 				</table>
 			</div>
+						<div class="col-3">
+				<div class="row">
+					<div class="col-6 text-center">
+							<button class="dropdown-toggle btn btn-outline-primary btn-sm" type="button" data-toggle="dropdown">Sort</button>
+							<div class="dropdown-menu">
+								<custom:sort innerHtml="Name asc" paramValue="name"/>
+								<custom:sort innerHtml="Name desc" paramValue="name,desc"/>
+							</div>
+					</div>
+					<div class="col-6 text-center">
+						<custom:size posibleSizes="1,2,5,10" size="${meals.size}"/>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12 text-center">
+				<custom:pageable page="${meals}"/>
+			</div>
+		</div>
 		</div>
 		<sec:authorize access="hasRole('ROLE_CAFE')">
 		<div class="row">
